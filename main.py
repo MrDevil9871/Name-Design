@@ -287,11 +287,21 @@ def admin_manage(message):
     except Exception as e: bot.reply_to(message, f"❌ Error: {str(e)}")
 
 # ===============================
-# MAIN EXECUTION
+# MAIN EXECUTION (Updated for Gunicorn)
 # ===============================
-if __name__ == "__main__":
-    # Start Web Server Thread
-    Thread(target=run_web).start()
-    print("✅ Web Server & Bot Started Successfully!")
-    bot.infinity_polling()
 
+# Ye function bot ko alag se chalayega
+def start_bot():
+    print("🤖 Bot Polling Started...")
+    bot.infinity_polling(skip_pending=True)
+
+# Gunicorn jab 'app' ko load karega, tabhi bot start ho jaye
+from threading import Thread
+bot_thread = Thread(target=start_bot)
+bot_thread.daemon = True
+bot_thread.start()
+
+if __name__ == "__main__":
+    # Local testing ke liye (Render par gunicorn ise ignore karta hai)
+    app.run(host='0.0.0.0', port=8080)
+                     
