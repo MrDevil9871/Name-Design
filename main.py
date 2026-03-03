@@ -7,7 +7,7 @@ import telebot
 from telebot import types
 from dotenv import load_dotenv
 
-# .env file load karna (Sirf local testing ke liye, Render par Env Vars use honge)
+# .env file load karna
 load_dotenv()
 
 # ===============================
@@ -21,11 +21,7 @@ def home():
 
 @app.route('/favicon.ico')
 def favicon():
-    return '', 204  # Uptimerobot favicon error fix
-
-def run_web():
-    port = int(os.environ.get("PORT", 8080))
-    app.run(host='0.0.0.0', port=port)
+    return '', 204
 
 # ===============================
 # CONFIGURATION FROM ENV
@@ -42,66 +38,21 @@ USERS_FILE = "users.json"
 # ===============================
 default_designs = {
     "1": [
-
-"🤍 ⍣⃪‌ {} ❛𝆺𝅥𓆪ꪾ™",
-"🔥 {} 🝐",
-"➺ {} ✦",
-"❛ {} 💗",
-"🐼 {}",
-"🦁 {} ⚡",
-"𓆰⎯꯭꯭֯‌{}𓂃ֶꪳ 𓆩〭〬🔥𓆪ꪾ",
-".𝁘ໍ⎯꯭‌- {} ⌯ 𝘅𝗗 𓂃⎯꯭‌ ִֶָ ֺ🎀",
-"𓂃❛ ⟶‌{} ❜ 🌙⤹🌸",
-"🍹𝆺𝅥⃝🤍 ‌⃪‌ ᷟ●{}🤍᪳𝆺꯭𝅥⎯꯭‌⎯꯭",
-"⋆⎯፝֟፝֟⎯᪵ 𝆺꯭𝅥{} ᭄꯭🦋꯭᪳᪳᪻⎯‌⎯🐣",
-"⟶‌ꭙ⋆🔥𓆩〬 {}⎯᳝֟፝֟⎯‌ꭙ⋆🔥",
-"❛ .𝁘ໍ{}ꨄ 🦋𓂃•",
-"⏤‌‌ {}𓂃 🔥𝆺𝅥 🜲 ⌯",
-"ᯓ𓆰𝅃🔥{}⍣꯭꯭𓆪꯭🝐",
-"➺ ‌⃪⃜ {}✦ 𝆺𝅥⎯ꨄ",
-"𓆩❥⃝🌸{}🌸⃝❥𓆪",
-"◄⏤❥⃝🦋{}🦋⃝❥⏤►",
-"𓄂𝆺𝅥⃝🥀{}🥀⃝𝆺𝅥𓄂",
-"❍─⃜𓆩🤍{}🤍𓆪⃜─❍",
-"🦋⃟≛⃝⋆ {} ⋆⃝≛⃟🦋",
-"𓆩🔥⃝ {} ⃝🔥𓆪",
-"𓆩⍣⃝💖{}💖⃝⍣𓆪",
-"❍⏤● {} ●───♫▷",
-"⛦⃕𝄟🦋{}🦋𝄟⃕⛦",
-"◄⏤🝛꯭ {} ꯭🝛⏤►",
-"𓆩❤️🔥 {} 🔥❤️𓆪",
-"••ᯓ❥๋{}࿐❥ᯓ••",
-"❝🍷{}🍷❞",
-"𓍼💗 {} 💗⌯™",
-"𓆰꯭❛ {} ❜꯭𓆪",
-"❍─⃜𓆩👑 {} 👑𓆪⃜─❍",
-"°ꗝ༎ࠫ {} ࠫ༎ꗝ°",
-"◄⏤🫧⃝ {} ⃝🫧⏤►",
-"𓆩🪽⃝ {} ⃝🪽𓆪",
-"𓆩🥀⃝ {} ⃝🥀𓆪",
-"𓄂─⃛𓆩✨ {} ✨𓆪⃛─𓄂",
-"◄⏤🖤⃝ {} ⃝🖤⏤►",
-"𓆩🦚⃝ {} ⃝🦚𓆪",
-"❥⃝꯭✿ {} ✿꯭⃝❥",
-"𓆩🌙⃝ {} ⃝🌙𓆪",
-"◄⏤⚡⃝ {} ⃝⚡⏤►",
-"𓆩🎧⃝ {} ⃝🎧𓆪",
-"𓆩💫⃝ {} ⃝💫𓆪",
-"◄⏤👑⃝ {} ⃝👑⏤►",
-"𓆩🕊⃝ {} ⃝🕊𓆪",
-"❍─⃜𓆩💎 {} 💎𓆪⃜─❍",
-"◄⏤💥⃝ {} ⃝💥⏤►",
-"𓆩🍷⃝ {} ⃝🍷𓆪",
-"❥⃝🔥 {} 🔥⃝❥",
-"𓆩😈⃝ {} ⃝😈𓆪",
-"◄⏤😎⃝ {} ⃝😎⏤►",
-"𓆩💀⃝ {} ⃝💀𓆪",
-"◄⏤☠⃝ {} ⃝☠⏤►",
-"𓆩🌹⃝ {} ⃝🌹𓆪",
-"◄⏤🌸⃝ {} ⃝🌸⏤►",
-"𓆩🦅⃝ {} ⃝🦅𓆪"
-
-],
+        "🤍 ⍣⃪‌ {} ❛𝆺𝅥𓆪ꪾ™", "🔥 {} 🝐", "➺ {} ✦", "❛ {} 💗", "🐼 {}", "🦁 {} ⚡",
+        "𓆰⎯꯭꯭֯‌{}𓂃ֶꪳ 𓆩〭〬🔥𓆪ꪾ", ".𝁘ໍ⎯꯭‌- {} ⌯ 𝘅𝗗 𓂃⎯꯭‌ ִֶָ ֺ🎀", "𓂃❛ ⟶‌{} ❜ 🌙⤹🌸",
+        "🍹𝆺𝅥⃝🤍 ‌⃪‌ ᷟ●{}🤍᪳𝆺꯭𝅥⎯꯭‌⎯꯭", "⋆⎯፝֟፝֟⎯᪵ 𝆺꯭𝅥{} ᭄꯭🦋꯭᪳᪳᪻⎯‌⎯🐣", "⟶‌ꭙ⋆🔥𓆩〬 {}⎯᳝֟፝֟⎯‌ꭙ⋆🔥",
+        "❛ .𝁘ໍ{}ꨄ 🦋𓂃•", "⏤‌‌ {}𓂃 🔥𝆺𝅥 🜲 ⌯", "ᯓ𓆰𝅃🔥{}⍣꯭꯭𓆪꯭🝐", "➺ ‌⃪⃜ {}✦ 𝆺𝅥⎯ꨄ",
+        "𓆩❥⃝🌸{}🌸⃝❥𓆪", "◄⏤❥⃝🦋{}🦋⃝❥⏤►", "𓄂𝆺𝅥⃝🥀{}🥀⃝𝆺𝅥𓄂", "❍─⃜𓆩🤍{}🤍𓆪⃜─❍",
+        "🦋⃟≛⃝⋆ {} ⋆⃝≛⃟🦋", "𓆩🔥⃝ {} ⃝🔥𓆪", "𓆩⍣⃝💖{}💖⃝⍣𓆪", "❍⏤● {} ●───♫▷",
+        "⛦⃕𝄟🦋{}🦋𝄟⃕⛦", "◄⏤🝛꯭ {} ꯭🝛⏤►", "𓆩❤️🔥 {} 🔥❤️𓆪", "••ᯓ❥๋{}࿐❥ᯓ••",
+        "❝🍷{}🍷❞", "𓍼💗 {} 💗⌯™", "𓆰꯭❛ {} ❜꯭𓆪", "❍─⃜𓆩👑 {} 👑𓆪⃜─❍",
+        "°ꗝ༎ࠫ {} ࠫ༎ꗝ°", "◄⏤🫧⃝ {} ⃝🫧⏤►", "𓆩🪽⃝ {} ⃝🪽𓆪", "𓆩🥀⃝ {} ⃝🥀𓆪",
+        "𓄂─⃛𓆩✨ {} ✨𓆪⃛─𓄂", "◄⏤🖤⃝ {} ⃝🖤⏤►", "𓆩🦚⃝ {} ⃝🦚𓆪", "❥⃝꯭✿ {} ✿꯭⃝❥",
+        "𓆩🌙⃝ {} ⃝🌙𓆪", "◄⏤⚡⃝ {} ⃝⚡⏤►", "𓆩🎧⃝ {} ⃝🎧𓆪", "𓆩💫⃝ {} ⃝💫𓆪",
+        "◄⏤👑⃝ {} ⃝👑⏤►", "𓆩🕊⃝ {} ⃝🕊𓆪", "❍─⃜𓆩💎 {} 💎𓆪⃜─❍", "◄⏤💥⃝ {} ⃝💥⏤►",
+        "𓆩🍷⃝ {} ⃝🍷𓆪", "❥⃝🔥 {} 🔥⃝❥", "𓆩😈⃝ {} ⃝😈𓆪", "◄⏤😎⃝ {} ⃝😎⏤►",
+        "𓆩💀⃝ {} ⃝💀𓆪", "◄⏤☠⃝ {} ⃝☠⏤►", "𓆩🌹⃝ {} ⃝🌹𓆪", "◄⏤🌸⃝ {} ⃝🌸⏤►", "𓆩🦅⃝ {} ⃝🦅𓆪"
+    ],
     "2": [
         "🔥 {} ⚔️ {} 🔥", "👑 {} ✨ {} 👑", "꧁ {} 💎 {} ꧂", 
         "⚡ {} 🦁 {} ⚡", "🦅 {} 🌀 {} 🦅", "💀 {} 🐉 {} 💀",
@@ -131,21 +82,21 @@ def add_user(user_id):
         save_data(USERS_FILE, users)
 
 # ===============================
-# FONT ENGINE (5 FONTS)
+# FONT ENGINE (10 FONTS)
 # ===============================
 def apply_font(text, font_type):
     text = text.lower()
     m = {
         "block": {'a': '🅻', 'b': '🅱️', 'c': '🅲', 'd': '🅳', 'e': '🅴', 'f': '🅵', 'g': '🅶', 'h': '🅷', 'i': '🅸', 'j': '🅹', 'k': '🅺', 'l': '🅻', 'm': '🅼', 'n': '🅽', 'o': '🅾️', 'p': '🅿️', 'q': '🆀', 'r': '🆁', 's': '🆂', 't': '🆃', 'u': '🆄', 'v': '🆅', 'w': '🆆', 'x': '🆇', 'y': '🆈', 'z': '🆉', '0': '0️⃣', '1': '1️⃣', '2': '2️⃣', '3': '3️⃣', '4': '4️⃣', '5': '5️⃣', '6': '6️⃣', '7': '7️⃣', '8': '8️⃣', '9': '9️⃣'},
         "circle": {'a': '🅐', 'b': '🅑', 'c': '🅒', 'd': '🅓', 'e': '🅔', 'f': '🅕', 'g': '🅖', 'h': '🅗', 'i': '🅘', 'j': '🅙', 'k': '🅚', 'l': '🅛', 'm': '🅜', 'n': '🅝', 'o': '🅞', 'p': '🅟', 'q': '🅠', 'r': '🅡', 's': '🅢', 't': '🅣', 'u': '🅤', 'v': '🅥', 'w': '🅦', 'x': '🅧', 'y': '🅨', 'z': '🅩', '0': '⓿', '1': '❶', '2': '❷', '3': '❸', '4': '❹', '5': '❺', '6': '❻', '7': '❼', '8': '❽', '9': '❾'},
-        "square": {'a': '🄰', 'b': '🄱', 'c': '🄲', 'd': '🄳', 'e': '🄴', 'f': '🄵', 'g': '🄶', 'h': '🄷', 'i': '🄸', 'j': '🄹', 'k': '🄺', 'l': '🄻', 'm': '🄼', 'n': '🄽', 'o': '🄾', 'p': '🄿', 'q': '🅀', 'r': '🅁', 's': '🅂', 't': '🅃', 'u': '🅄', 'v': '🅅', 'w': '🅆', 'x': '🅇', 'y': '🅈', 'z': '🅉', '0':'0','1':'1','2':'2','3':'3','4':'4','5':'5','6':'6','7':'7','8':'8','9':'9'},
+        "square": {'a': '🄰', 'b': '🄱', 'c': '🄲', 'd': '🄳', 'e': '🄴', 'f': '🄵', 'g': '🄶', 'h': '🄷', 'i': '🄸', 'j': '🄹', 'k': '🄺', 'l': '🄻', 'm': '🄼', 'n': '🄽', 'o': '🄾', 'p': '🄿', 'q': '🅀', 'r': '🅁', 's': '🅂', 't': '🅃', 'u': '🅄', 'v': '🅅', 'w': '🅆', 'x': '🅇', 'y': '🅈', 'z': '🅉'},
         "small": {'a': 'ᴀ', 'b': 'ʙ', 'c': 'ᴄ', 'd': 'ᴅ', 'e': 'ᴇ', 'f': 'ꜰ', 'g': 'ɢ', 'h': 'ʜ', 'i': 'ɪ', 'j': 'ᴊ', 'k': 'ᴋ', 'l': 'ʟ', 'm': 'ᴍ', 'n': 'ɴ', 'o': 'ᴏ', 'p': 'ᴘ', 'q': 'ǫ', 'r': 'ʀ', 's': 's', 't': 'ᴛ', 'u': 'ᴜ', 'v': 'ᴠ', 'w': 'ᴡ', 'x': 'x', 'y': 'ʏ', 'z': 'ᴢ'},
         "wild": {'a': 'ค', 'b': '๒', 'c': 'ς', 'd': '๔', 'e': 'є', 'f': 'Ŧ', 'g': 'ﻮ', 'h': 'ђ', 'i': 'เ', 'j': 'ן', 'k': 'к', 'l': 'ɭ', 'm': '๓', 'n': 'ภ', 'o': '๏', 'p': 'ק', 'q': 'ợ', 'r': 'г', 's': 'ร', 't': 'Շ', 'u': 'ย', 'v': 'ง', 'w': 'ฬ', 'x': 'א', 'y': 'ץ', 'z': 'չ'},
-        "bold_script": {'a': '𝓪', 'b': '𝓫', 'c': '𝓬', 'd': '𝓭', 'e': '𝓮', 'f': '𝓯', 'g': '𝓰', 'h': '𝓱', 'i': '𝓲', 'j': '𝓳', 'k': '𝓴', 'l': '𝓵', 'm': '𝓶', 'n': '𝓷', 'o': '𝓸', 'p': '𝓹', 'q': '𝓺', 'r': '𝓻', 's': '𝓼', 't': '𝓽', 'u': '𝓾', 'v': '𝓿', 'w': '𝔀', 'x': '🔁', 'y': '𝔂', 'z': '🔃'},
-"monospace": {'a': '𝚊', 'b': '𝚋', 'c': '𝚌', 'd': '𝚍', 'e': '𝚎', 'f': '𝚏', 'g': '𝚐', 'h': '𝚑', 'i': '𝚒', 'j': '𝚓', 'k': '𝚔', 'l': '𝚕', 'm': '𝚖', 'n': '𝚗', 'o': '𝚘', 'p': '𝚙', 'q': '𝚚', 'r': '𝚛', 's': '𝚜', 't': '𝚝', 'u': '𝚞', 'v': '𝚟', 'w': '𝚠', 'x': '𝚡', 'y': '𝚢', 'z': '𝚣'},
-"double_struck": {'a': '𝕒', 'b': '𝕓', 'c': '𝕔', 'd': '𝕕', 'e': '𝕖', 'f': '𝕗', 'g': '𝕘', 'h': '𝕙', 'i': '𝕚', 'j': '𝕛', 'k': '𝕜', 'l': '𝕝', 'm': '𝕞', 'n': '𝕟', 'o': '𝕠', 'p': '𝕡', 'q': '𝕢', 'r': '𝕣', 's': '𝕤', 't': '𝕥', 'u': '𝕦', 'v': '𝕧', 'w': '𝕨', 'x': '𝕩', 'y': '𝕪', 'z': '𝕫'},
-"italic_bold": {'a': '𝙖', 'b': '𝙗', 'c': '𝙘', 'd': '𝙙', 'e': '𝙚', 'f': '𝙛', 'g': '𝙜', 'h': '𝙝', 'i': '𝙞', 'j': '𝙟', 'k': '𝙠', 'l': '𝙡', 'm': '𝙢', 'n': '𝙣', 'o': '𝙤', 'p': '𝙥', 'q': '𝙦', 'r': '𝙧', 's': '𝙨', 't': '𝙩', 'u': '𝙪', 'v': '𝙫', 'w': '𝙬', 'x': '𝙭', 'y': '𝙮', 'z': '𝙯'},
-"bubble": {'a': 'ⓐ', 'b': 'ⓑ', 'c': 'ⓒ', 'd': 'ⓓ', 'e': 'ⓔ', 'f': 'ⓕ', 'g': 'ⓖ', 'h': 'ⓗ', 'i': 'ⓘ', 'j': 'ⓙ', 'k': 'ⓚ', 'l': 'ⓛ', 'm': 'ⓜ', 'n': 'ⓝ', 'o': 'ⓞ', 'p': 'ⓟ', 'q': 'ⓠ', 'r': 'ⓡ', 's': 'ⓢ', 't': 'ⓣ', 'u': 'ⓤ', 'v': 'ⓥ', 'w': 'ⓦ', 'x': 'ⓧ', 'y': 'ⓨ', 'z': 'ⓩ'}
+        "bold_script": {'a': '𝓪', 'b': '𝓫', 'c': '𝓬', 'd': '𝓭', 'e': '𝓮', 'f': '𝓯', 'g': '𝓰', 'h': '𝓱', 'i': '𝓲', 'j': '𝓳', 'k': '𝓴', 'l': '𝓵', 'm': '𝓶', 'n': '𝓷', 'o': '𝓸', 'p': '𝓹', 'q': '𝓺', 'r': '𝓻', 's': '𝓼', 't': '𝓽', 'u': '𝓾', 'v': '𝓿', 'w': '𝔀', 'x': '𝔁', 'y': '𝔂', 'z': '𝔃'},
+        "monospace": {'a': '𝚊', 'b': '𝚋', 'c': '𝚌', 'd': '𝚍', 'e': '𝚎', 'f': '𝚏', 'g': '𝚐', 'h': '𝚑', 'i': '𝚒', 'j': '𝚓', 'k': '𝚔', 'l': '𝚕', 'm': '𝚖', 'n': '𝚗', 'o': '𝚘', 'p': '𝚙', 'q': '𝚚', 'r': '𝚛', 's': '𝚜', 't': '𝚝', 'u': '𝚞', 'v': '𝚟', 'w': '𝚠', 'x': '𝚡', 'y': '𝚢', 'z': '𝚣'},
+        "double_struck": {'a': '𝕒', 'b': '𝕓', 'c': '𝕔', 'd': '𝕕', 'e': '𝕖', 'f': '𝕗', 'g': '𝕘', 'h': '𝕙', 'i': '𝕚', 'j': '𝕛', 'k': '𝕜', 'l': '𝕝', 'm': '𝕞', 'n': '𝕟', 'o': '𝕠', 'p': '𝕡', 'q': '𝕢', 'r': '𝕣', 's': '𝕤', 't': '𝕥', 'u': '𝕦', 'v': '𝕧', 'w': '𝕨', 'x': '𝕩', 'y': '𝕪', 'z': '𝕫'},
+        "italic_bold": {'a': '𝙖', 'b': '𝙗', 'c': '𝙘', 'd': '𝙙', 'e': '𝙚', 'f': '𝙛', 'g': '𝙜', 'h': '𝙝', 'i': '𝙞', 'j': '𝙟', 'k': '𝙠', 'l': '𝙡', 'm': '𝙢', 'n': '𝙣', 'o': '𝙤', 'p': '𝙥', 'q': '𝙦', 'r': '𝙧', 's': '𝙨', 't': '𝙩', 'u': '𝙪', 'v': '𝙫', 'w': '𝙬', 'x': '𝙭', 'y': '𝙮', 'z': '𝙯'},
+        "bubble": {'a': 'ⓐ', 'b': 'ⓑ', 'c': 'ⓒ', 'd': 'ⓓ', 'e': 'ⓔ', 'f': 'ⓕ', 'g': 'ⓖ', 'h': 'ⓗ', 'i': 'ⓘ', 'j': 'ⓙ', 'k': 'ⓚ', 'l': 'ⓛ', 'm': 'ⓜ', 'n': 'ⓝ', 'o': 'ⓞ', 'p': 'ⓟ', 'q': 'ⓠ', 'r': 'ⓡ', 's': 'ⓢ', 't': 'ⓣ', 'u': 'ⓤ', 'v': 'ⓥ', 'w': 'ⓦ', 'x': 'ⓧ', 'y': 'ⓨ', 'z': 'ⓩ'}
     }
     target = m.get(font_type, {})
     return "".join(target.get(c, c) for c in text)
@@ -157,13 +108,10 @@ def apply_font(text, font_type):
 @bot.message_handler(commands=['start', 'help'])
 def welcome(message):
     add_user(message.from_user.id)
-    bot.send_message(message.chat.id, "✨ **Stylish Name Editor Online!**\n\nUse `/name [your name]` to get started.\n*Example:* `/name Rahul` or `/name Rahul King`", parse_mode="Markdown")
+    bot.send_message(message.chat.id, "✨ **Stylish Name Editor Online!**\n\nUse `/name [name]` to start.\n*Example:* `/name Rahul`", parse_mode="Markdown")
 
 @bot.message_handler(commands=['name'])
 def name_cmd(message):
-    if message.chat.type != "private":
-        return bot.reply_to(message, "❌ Use me in Private Chat!")
-    
     args = message.text.split(maxsplit=1)
     if len(args) < 2:
         return bot.reply_to(message, "❗ Please provide a name. Example: `/name Rahul`")
@@ -204,8 +152,14 @@ def handle_font(call):
     font = call.data.split("_")[1]
     u_id = call.from_user.id
     if u_id not in user_sessions: return
+    
     user_sessions[u_id]["font"] = font
     user_sessions[u_id]["page"] = 0
+    
+    #answer_callback_query icon hatane ke liye
+    bot.answer_callback_query(call.id, text=f"Applying {font} style...")
+    
+    # Buttons ko edit nahi kar rahe, direct designs bhej rahe hain
     show_designs(call.message, u_id)
 
 def show_designs(message, u_id):
@@ -216,7 +170,7 @@ def show_designs(message, u_id):
     if mode == "1": styled = [apply_font(text, font)]
     else:
         if len(words) < 2:
-            return bot.send_message(message.chat.id, "⚠️ Need at least 2 words for this filter.")
+            return bot.send_message(message.chat.id, "⚠️ Need 2 words for this filter.")
         styled = [apply_font(words[0], font), apply_font(" ".join(words[1:]), font)]
 
     target_list = designs.get(mode, [])
@@ -224,10 +178,9 @@ def show_designs(message, u_id):
     current = target_list[start:end]
 
     if not current:
-        return bot.send_message(message.chat.id, "🏁 No more designs available!")
+        return bot.send_message(message.chat.id, "🏁 End of designs.")
 
-    try: bot.delete_message(message.chat.id, message.message_id)
-    except: pass
+    bot.send_message(message.chat.id, f"✨ **Style:** {font.upper()} (Page {page+1})")
 
     for d in current:
         try: bot.send_message(message.chat.id, f"`{d.format(*styled)}`", parse_mode="Markdown")
@@ -236,9 +189,7 @@ def show_designs(message, u_id):
     if len(target_list) > end:
         markup = types.InlineKeyboardMarkup()
         markup.add(types.InlineKeyboardButton("Next 10 Designs ➡️", callback_data="next_p"))
-        bot.send_message(message.chat.id, f"Page {page+1} finished.", reply_markup=markup)
-    else:
-        bot.send_message(message.chat.id, "🏁 End of list.")
+        bot.send_message(message.chat.id, "Check more:", reply_markup=markup)
 
 @bot.callback_query_handler(func=lambda call: call.data == "next_p")
 def next_page(call):
@@ -247,7 +198,7 @@ def next_page(call):
         user_sessions[u_id]["page"] += 1
         show_designs(call.message, u_id)
 
-# Admin Broadcast
+# Admin Commands
 @bot.message_handler(func=lambda m: m.text.startswith("!message") and m.from_user.id == OWNER_ID)
 def broadcast(message):
     msg_text = message.text.replace("!message", "").strip()
@@ -258,9 +209,8 @@ def broadcast(message):
             bot.send_message(u, msg_text)
             sent += 1
         except: continue
-    bot.reply_to(message, f"✅ Broadcast sent to {sent} users.")
+    bot.reply_to(message, f"✅ Sent to {sent} users.")
 
-# Admin Add/Remove
 @bot.message_handler(func=lambda m: (m.text.startswith("!add") or m.text.startswith("!remove")) and m.from_user.id == OWNER_ID)
 def admin_manage(message):
     try:
@@ -269,29 +219,25 @@ def admin_manage(message):
         if cmd == "!add":
             designs[mode].append(content)
             save_data(DESIGNS_FILE, designs)
-            bot.reply_to(message, f"✅ Added to Filter {mode}")
+            bot.reply_to(message, f"✅ Added to {mode}")
         else:
             designs[mode].remove(content)
             save_data(DESIGNS_FILE, designs)
-            bot.reply_to(message, "🗑️ Removed successfully.")
-    except Exception as e: bot.reply_to(message, f"❌ Error: {str(e)}")
+            bot.reply_to(message, "🗑️ Removed.")
+    except Exception as e: bot.reply_to(message, f"❌ Error: {e}")
 
 # ===============================
-# MAIN EXECUTION (Updated for Gunicorn)
+# MAIN EXECUTION
 # ===============================
-
-# Ye function bot ko alag se chalayega
 def start_bot():
     print("🤖 Bot Polling Started...")
     bot.infinity_polling(skip_pending=True)
 
-# Gunicorn jab 'app' ko load karega, tabhi bot start ho jaye
 from threading import Thread
 bot_thread = Thread(target=start_bot)
 bot_thread.daemon = True
 bot_thread.start()
 
 if __name__ == "__main__":
-    # Local testing ke liye (Render par gunicorn ise ignore karta hai)
-    app.run(host='0.0.0.0', port=8080)
-                     
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host='0.0.0.0', port=port)
