@@ -96,7 +96,12 @@ def apply_font(text, font_type):
         "monospace": {'a': '𝚊', 'b': '𝚋', 'c': '𝚌', 'd': '𝚍', 'e': '𝚎', 'f': '𝚏', 'g': '𝚐', 'h': '𝚑', 'i': '𝚒', 'j': '𝚓', 'k': '𝚔', 'l': '𝚕', 'm': '𝚖', 'n': '𝚗', 'o': '𝚘', 'p': '𝚙', 'q': '𝚚', 'r': '𝚛', 's': '𝚜', 't': '𝚝', 'u': '𝚞', 'v': '𝚟', 'w': '𝚠', 'x': '𝚡', 'y': '𝚢', 'z': '𝚣'},
         "double_struck": {'a': '𝕒', 'b': '𝕓', 'c': '𝕔', 'd': '𝕕', 'e': '𝕖', 'f': '𝕗', 'g': '𝕘', 'h': '𝕙', 'i': '𝕚', 'j': '𝕛', 'k': '𝕜', 'l': '𝕝', 'm': '𝕞', 'n': '𝕟', 'o': '𝕠', 'p': '𝕡', 'q': '𝕢', 'r': '𝕣', 's': '𝕤', 't': '𝕥', 'u': '𝕦', 'v': '𝕧', 'w': '𝕨', 'x': '𝕩', 'y': '𝕪', 'z': '𝕫'},
         "italic_bold": {'a': '𝙖', 'b': '𝙗', 'c': '𝙘', 'd': '𝙙', 'e': '𝙚', 'f': '𝙛', 'g': '𝙜', 'h': '𝙝', 'i': '𝙞', 'j': '𝙟', 'k': '𝙠', 'l': '𝙡', 'm': '𝙢', 'n': '𝙣', 'o': '𝙤', 'p': '𝙥', 'q': '𝙦', 'r': '𝙧', 's': '𝙨', 't': '𝙩', 'u': '𝙪', 'v': '𝙫', 'w': '𝙬', 'x': '𝙭', 'y': '𝙮', 'z': '𝙯'},
-        "bubble": {'a': 'ⓐ', 'b': 'ⓑ', 'c': 'ⓒ', 'd': 'ⓓ', 'e': 'ⓔ', 'f': 'ⓕ', 'g': 'ⓖ', 'h': 'ⓗ', 'i': 'ⓘ', 'j': 'ⓙ', 'k': 'ⓚ', 'l': 'ⓛ', 'm': 'ⓜ', 'n': 'ⓝ', 'o': 'ⓞ', 'p': 'ⓟ', 'q': 'ⓠ', 'r': 'ⓡ', 's': 'ⓢ', 't': 'ⓣ', 'u': 'ⓤ', 'v': 'ⓥ', 'w': 'ⓦ', 'x': 'ⓧ', 'y': 'ⓨ', 'z': 'ⓩ'}
+        "bubble": {'a': 'ⓐ', 'b': 'ⓑ', 'c': 'ⓒ', 'd': 'ⓓ', 'e': 'ⓔ', 'f': 'ⓕ', 'g': 'ⓖ', 'h': 'ⓗ', 'i': 'ⓘ', 'j': 'ⓙ', 'k': 'ⓚ', 'l': 'ⓛ', 'm': 'ⓜ', 'n': 'ⓝ', 'o': 'ⓞ', 'p': 'ⓟ', 'q': 'ⓠ', 'r': 'ⓡ', 's': 'ⓢ', 't': 'ⓣ', 'u': 'ⓤ', 'v': 'ⓥ', 'w': 'ⓦ', 'x': 'ⓧ', 'y': 'ⓨ', 'z': 'ⓩ'},
+        "greek": {'a': 'α', 'b': 'β', 'c': 'ψ', 'd': 'δ', 'e': 'ε', 'f': 'φ', 'g': 'γ', 'h': 'η', 'i': 'ι', 'j': 'ξ', 'k': 'κ', 'l': 'λ', 'm': 'μ', 'n': 'ν', 'o': 'ο', 'p': 'π', 'q': 'χ', 'r': 'ρ', 's': 'σ', 't': 'τ', 'u': 'υ', 'v': 'ω', 'w': 'ω', 'x': 'χ', 'y': 'υ', 'z': 'ζ'},
+        "currency": {'a': '₳', 'b': '฿', 'c': '₵', 'd': 'Đ', 'e': 'Ɇ', 'f': '₣', 'g': '₲', 'h': 'Ⱨ', 'i': 'ł', 'j': 'J', 'k': '₭', 'l': 'Ⱡ', 'm': '₥', 'n': '₦', 'o': 'Ø', 'p': '₱', 'q': 'Q', 'r': 'Ɽ', 's': '₴', 't': '₮', 'u': 'Ʉ', 'v': 'V', 'w': '₩', 'x': 'Ӿ', 'y': 'Ɏ', 'z': 'Ƶ'},
+        "paren": {'a': '⒜', 'b': '⒝', 'c': '⒞', 'd': '⒟', 'e': '⒠', 'f': '⒡', 'g': '⒢', 'h': '⒣', 'i': '⒤', 'j': '⒥', 'k': '⒦', 'l': '⒧', 'm': '⒨', 'n': '⒩', 'o': '⒪', 'p': '⒫', 'q': '⒬', 'r': '⒭', 's': '⒮', 't': '⒯', 'u': '⒰', 'v': '⒱', 'w': '⒲', 'x': '⒳', 'y': '⒴', 'z': '⒵'},
+        "bold_sans": {'a': '𝗮', 'b': '𝗯', 'c': '𝗰', 'd': '𝗱', 'e': '𝗲', 'f': '𝗳', 'g': '𝗴', 'h': '𝗵', 'i': '𝗶', 'j': '𝗷', 'k': '𝗸', 'l': '𝗹', 'm': '𝗺', 'n': '𝗻', 'o': '𝗼', 'p': '𝗽', 'q': '𝗾', 'r': '𝗿', 's': '𝘀', 't': '𝘁', 'u': '𝘂', 'v': '𝘃', 'w': '𝘄', 'x': '𝘅', 'y': '𝘆', 'z': '𝘇'},
+        "thin": {'a': '𝕒', 'b': '𝕓', 'c': '𝕔', 'd': '𝕕', 'e': '𝕖', 'f': '𝕗', 'g': '𝕘', 'h': '𝕙', 'i': '𝕚', 'j': '𝕛', 'k': '𝕜', 'l': '𝕝', 'm': '𝕞', 'n': '𝕟', 'o': '𝕠', 'p': '𝕡', 'q': '𝕢', 'r': '𝕣', 's': '𝕤', 't': '𝕥', 'u': '𝕦', 'v': '𝕧', 'w': '𝕨', 'x': '𝕩', 'y': '𝕪', 'z': '𝕫'}
     }
     target = m.get(font_type, {})
     return "".join(target.get(c, c) for c in text)
@@ -108,22 +113,27 @@ def apply_font(text, font_type):
 @bot.message_handler(commands=['start', 'help'])
 def welcome(message):
     add_user(message.from_user.id)
-    bot.send_message(message.chat.id, "✨ **Stylish Name Editor Online!**\n\nUse `/name [name]` to start.\n*Example:* `/name Rahul`", parse_mode="Markdown")
-
-@bot.message_handler(commands=['name'])
-def name_cmd(message):
-    args = message.text.split(maxsplit=1)
-    if len(args) < 2:
-        return bot.reply_to(message, "❗ Please provide a name. Example: `/name Rahul`")
     
-    user_sessions[message.from_user.id] = {"text": args[1], "page": 0}
+    # User ka naam nikaalne ke liye logic
+    first_name = message.from_user.first_name if message.from_user.first_name else ""
+    last_name = message.from_user.last_name if message.from_user.last_name else ""
+    full_name = f"{first_name} {last_name}".strip()
     
-    markup = types.InlineKeyboardMarkup(row_width=2)
-    markup.add(
-        types.InlineKeyboardButton("1️⃣ One Word Filter", callback_data="sel_1"),
-        types.InlineKeyboardButton("2️⃣ Two Word Filter", callback_data="sel_2")
+    welcome_text = (
+        f"👋 **Hey, {full_name}!**\n\n"
+        "Welcome to the **Name Designer Bot**. ✨\n\n"
+        "━━━━━━━━━━━━━━━━━━━━━\n"
+        "📖 **How to Use (Kaise Use Karein):**\n\n"
+        "1️⃣ **For Single Name:**\n"
+        "Send: `/name JASS` \n\n"
+        "2️⃣ **For Double Name (VIP Style):**\n"
+        "Send: `/name Jass Manak` \n\n"
+        "━━━━━━━━━━━━━━━━━━━━━\n"
+        "🎨 **Select your favorite font & design after sending the command.**\n\n"
+        "🚀 *Try it now! Just type /name followed by your name.*"
     )
-    bot.send_message(message.chat.id, f"👤 **Input:** `{args[1]}`\nSelect Filter Type:", reply_markup=markup, parse_mode="Markdown")
+    
+    bot.send_message(message.chat.id, welcome_text, parse_mode="Markdown")
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("sel_"))
 def select_filter(call):
@@ -132,7 +142,7 @@ def select_filter(call):
     if u_id not in user_sessions: return
     user_sessions[u_id]["mode"] = mode
     
-    markup = types.InlineKeyboardMarkup(row_width=2)
+    markup = types.InlineKeyboardMarkup(row_width=3)
     markup.add(
         types.InlineKeyboardButton("🅰️ Block", callback_data="f_block"),
         types.InlineKeyboardButton("🟢 Circle", callback_data="f_circle"),
@@ -143,9 +153,14 @@ def select_filter(call):
         types.InlineKeyboardButton("💻 Mono", callback_data="f_monospace"),
         types.InlineKeyboardButton("𝔻𝕠𝕦𝕓𝕝𝕖", callback_data="f_double_struck"),
         types.InlineKeyboardButton("倾 Italic", callback_data="f_italic_bold"),
-        types.InlineKeyboardButton("🫧 Bubble", callback_data="f_bubble")
+        types.InlineKeyboardButton("🫧 Bubble", callback_data="f_bubble"),
+        types.InlineKeyboardButton("🇬🇷 Greek", callback_data="f_greek"),
+        types.InlineKeyboardButton("💲 Money", callback_data="f_currency"),
+        types.InlineKeyboardButton("⒜ Paren", callback_data="f_paren"),
+        types.InlineKeyboardButton("𝗕𝗼𝗹𝗱", callback_data="f_bold_sans"),
+        types.InlineKeyboardButton("𝕋𝕙𝕚𝕟", callback_data="f_thin")
     )
-    bot.edit_message_text("🎨 **Select Font Style:**", call.message.chat.id, call.message.message_id, reply_markup=markup)
+    bot.edit_message_text("🎨 **00000**", call.message.chat.id, call.message.message_id, reply_markup=markup)
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("f_"))
 def handle_font(call):
