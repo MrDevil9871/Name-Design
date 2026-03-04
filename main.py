@@ -55,46 +55,59 @@ def apply_font(text, font_type):
     target = m.get(font_type, {})
     return "".join(target.get(c, c) for c in text)
 
-def show_designs(message, u_id):
+# ===============================
+# SHOW DESIGNS (With 10 Limit & Next Button)
+# ===============================
+def show_designs(message, u_id, start_index=0):
     data = user_sessions.get(u_id)
     if not data: return
     
     text, font, mode = data["text"], data["font"], data["mode"]
     words = text.split()
     
-    # Reloading designs from your JSON file
     current_designs = load_designs_from_file()
     target_list = current_designs.get(mode, [])
     
     if not target_list:
-        return bot.send_message(message.chat.id, "❌ JSON file mein koi designs nahi mile!")
+        return bot.send_message(message.chat.id, "❌ No designs found!")
 
-    # Applying font styles
+    # 10 Designs ka slice nikalna
+    end_index = start_index + 10
+    page_designs = target_list[start_index:end_index]
+    
+    # Styled text prepare karna
     if mode == "1":
         styled = [apply_font(text, font)]
     else:
-        # For VIP: Split words and style them
-        if len(words) < 2:
-            return bot.send_message(message.chat.id, "⚠️ VIP style ke liye kam se kam 2 words chahiye.")
+        if len(words) < 2: return
         styled = [apply_font(words[0], font), apply_font(" ".join(words[1:]), font)]
 
-    bot.send_message(message.chat.id, f"🚀 **Generating Styles for:** `{text}`")
-    
-    # Chunking messages to avoid Telegram flood/limit
-    for d in target_list:
+    # Designs ko ek hi message mein join karna taaki 10 alag message na jayein
+    output_text = f"🚀 **Designs ({start_index + 1}-{min(end_index, len(target_list))}):**\n\n"
+    for d in page_designs:
         try:
-            # count placeholders in design string
             placeholders = d.count("{}")
-            if placeholders == 0:
-                bot.send_message(message.chat.id, f"`{d}`", parse_mode="Markdown")
-            else:
-                # Sirf utne hi arguments pass karna jitne brackets hain
-                bot.send_message(message.chat.id, f"`{d.format(*styled[:placeholders])}`", parse_mode="Markdown")
-        except Exception as e:
-            # Agar koi design kharab hai toh bot skip karega, crash nahi
-            print(f"Skipping a bad design: {e}")
-            continue
+            formatted = d.format(*styled[:placeholders]) if placeholders > 0 else d
+            output_text += f"`{formatted}`\n\n"
+        except: continue
 
+    # Next Button ka logic
+    markup = types.InlineKeyboardMarkup()
+    if end_index < len(target_list):
+        markup.add(types.InlineKeyboardButton("➡️ Next 10 Designs", callback_data=f"next_{end_index}"))
+    
+    bot.send_message(message.chat.id, output_text, parse_mode="Markdown", reply_markup=markup)
+
+# ===============================
+# NEXT BUTTON HANDLER
+# ===============================
+@bot.callback_query_handler(func=lambda call: call.data.startswith("next_"))
+def handle_next_page(call):
+    next_index = int(call.data.split("_")[1])
+    u_id = call.from_user.id
+    # Purana button hata dena
+    bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=None)
+    show_designs(call.message, u_id, start_index=next_index)
 # ... (Handlers same rahenge pichle code jaise) ...
 @bot.message_handler(commands=['start'])
 def welcome(message):
