@@ -87,29 +87,23 @@ def show_designs(message, u_id, start_index=0):
         if len(words) < 2: return
         styled = [apply_font(words[0], font), apply_font(" ".join(words[1:]), font)]
 
-    # --- YAHAN HAI MAIN CHANGE ---
-    # Saare designs ko ek string (list_output) mein jama karna
-    list_output = []
+    bot.send_message(message.chat.id, f"🚀 **Sending Designs {start_index + 1} to {min(end_index, len(target_list))}...**")
+
+    # --- HAR DESIGN KA ALAG MESSAGE ---
     for d in page_designs:
         try:
             placeholders = d.count("{}")
             formatted = d.format(*styled[:placeholders]) if placeholders > 0 else d
-            # Har design ko code format (backticks) mein daalna taaki click-to-copy ho sake
-            list_output.append(f"`{formatted}`")
+            # Yahan hum har design ko alag message mein bhej rahe hain
+            bot.send_message(message.chat.id, f"`{formatted}`", parse_mode="Markdown")
         except:
             continue
 
-    # Saare designs ko newline (\n) se jod kar ek bada message banana
-    final_message = f"🎨 **Your Designs ({start_index + 1}-{min(end_index, len(target_list))}):**\n\n"
-    final_message += "\n\n".join(list_output) 
-
-    # Next Button ka logic
+    # Next Button ka message (Alag se)
     markup = types.InlineKeyboardMarkup()
     if end_index < len(target_list):
         markup.add(types.InlineKeyboardButton("➡️ Next 10 Designs", callback_data=f"next_{end_index}"))
-    
-    # EK HI MESSAGE BHEJNA
-    bot.send_message(message.chat.id, final_message, parse_mode="Markdown", reply_markup=markup)
+        bot.send_message(message.chat.id, "Agle designs dekhne ke liye niche click karein:", reply_markup=markup)
 
 # ===============================
 # HANDLERS
