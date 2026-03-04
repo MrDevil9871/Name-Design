@@ -16,26 +16,26 @@ def home(): return "Bot is running 24/7!"
 TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
 
+# File Name
+DESIGNS_FILE = "my_designs.json"
 user_sessions = {}
 
 # ===============================
-# DESIGNS DATA (Added back for generation)
+# JSON LOADING LOGIC
 # ===============================
-designs_list = {
-    "1": [
-        "🤍 ⍣⃪‌ {} ❛𝆺𝅥𓆪ꪾ™", "🔥 {} 🝐", "➺ {} ✦", "❛ {} 💗", "🐼 {}", "🦁 {} ⚡",
-        "𓆰⎯꯭꯭֯‌{}𓂃ֶꪳ 𓆩〭〬🔥𓆪ꪾ", ".𝁘ໍ⎯꯭‌- {} ⌯ 𝘅𝗗 𓂃⎯꯭‌ ִֶָ ֺ🎀", "𓂃❛ ⟶‌{} ❜ 🌙⤹🌸",
-        "🍹𝆺𝅥⃝🤍 ‌⃪‌ ᷟ●{}🤍᪳𝆺꯭𝅥⎯꯭‌⎯꯭", "⋆⎯፝֟፝֟⎯᪵ 𝆺꯭𝅥{} ᭄꯭🦋꯭᪳᪳᪻⎯‌⎯🐣", "⟶‌ꭙ⋆🔥𓆩〬 {}⎯᳝֟፝֟⎯‌ꭙ⋆🔥"
-    ],
-    "2": [
-        "🔥 {} ⚔️ {} 🔥", "👑 {} ✨ {} 👑", "꧁ {} 💎 {} ꧂", 
-        "⚡ {} 🦁 {} ⚡", "🦁 {} 🦁 {} 🦁", "🦅 {} 🌀 {} 🦅",
-        "𓆩❥⃝🌸{}🌸⃝❥𓆪", "◄⏤❥⃝🦋{}🦋⃝❥⏤►"
-    ]
-}
+def load_designs_from_file():
+    """File se designs read karne ke liye function"""
+    if os.path.exists(DESIGNS_FILE):
+        try:
+            with open(DESIGNS_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as e:
+            print(f"Error loading JSON: {e}")
+            return {"1": [], "2": []}
+    return {"1": [], "2": []}
 
 # ===============================
-# FONT ENGINE (All 19 Styles Kept)
+# FONT ENGINE (All 19 Styles)
 # ===============================
 def apply_font(text, font_type):
     text = text.lower()
@@ -64,56 +64,57 @@ def apply_font(text, font_type):
     return "".join(target.get(c, c) for c in text)
 
 # ===============================
-# DESIGNS GENERATOR FUNCTION (Fix)
+# SHOW DESIGNS (JSON Connected)
 # ===============================
 def show_designs(message, u_id):
     data = user_sessions.get(u_id)
+    if not data: return
+    
     text, font, mode = data["text"], data["font"], data["mode"]
     words = text.split()
+    
+    # Refresh designs from JSON file
+    current_designs = load_designs_from_file()
     
     if mode == "1":
         styled = [apply_font(text, font)]
     else:
         if len(words) < 2:
-            return bot.send_message(message.chat.id, "⚠️ VIP style needs 2 words.")
+            return bot.send_message(message.chat.id, "⚠️ VIP filter needs at least 2 words.")
         styled = [apply_font(words[0], font), apply_font(" ".join(words[1:]), font)]
 
-    target_designs = designs_list.get(mode, [])
+    target_list = current_designs.get(mode, [])
     
-    bot.send_message(message.chat.id, f"✨ **Designs for:** `{text}`")
-    for d in target_designs:
+    if not target_list:
+        return bot.send_message(message.chat.id, "❌ No designs found in JSON for this mode.")
+
+    bot.send_message(message.chat.id, f"🎨 **Generated Designs:**")
+    for d in target_list:
         try:
-            bot.send_message(message.chat.id, f"`{d.format(*styled)}`", parse_mode="Markdown")
-        except: continue
+            # Format logic (supports {0}, {1} etc)
+            formatted_design = d.format(*styled)
+            bot.send_message(message.chat.id, f"`{formatted_design}`", parse_mode="Markdown")
+        except Exception as e:
+            continue
 
 # ===============================
-# COMMANDS
+# TELEGRAM HANDLERS
 # ===============================
 
 @bot.message_handler(commands=['start', 'help'])
 def welcome(message):
     first_name = message.from_user.first_name or "User"
-    welcome_text = (
-        f"👋 **Hey, {first_name}!**\n\n"
-        "Welcome to **Name Designer Bot** ✨\n"
-        "━━━━━━━━━━━━━━━━━━━━━\n"
-        "📖 **How to Use:**\n"
-        "1️⃣ Single Name: `/name Jass` \n"
-        "2️⃣ Double Name: `/name Jass Manak` \n"
-        "━━━━━━━━━━━━━━━━━━━━━\n"
-        "Bas apna naam bhejo aur stylish designs paao!"
-    )
-    bot.send_message(message.chat.id, welcome_text, parse_mode="Markdown")
+    bot.send_message(message.chat.id, f"👋 **Hello {first_name}!**\nSend `/name YourName` to start styling.", parse_mode="Markdown")
 
 @bot.message_handler(commands=['name'])
 def start_name(message):
     args = message.text.split(maxsplit=1)
     if len(args) < 2:
-        return bot.reply_to(message, "⚠️ Please provide a name.\nExample: `/name Rahul`")
+        return bot.reply_to(message, "⚠️ Usage: `/name Rahul` or `/name Rahul Khan`")
     
     u_name = args[1]
     u_id = message.from_user.id
-    user_sessions[u_id] = {"text": u_name, "font": "small", "page": 0, "mode": "1"}
+    user_sessions[u_id] = {"text": u_name, "font": "small", "mode": "1"}
     
     words = u_name.split()
     markup = types.InlineKeyboardMarkup()
@@ -124,7 +125,7 @@ def start_name(message):
     else:
         markup.add(types.InlineKeyboardButton("✨ Apply Filters", callback_data="sel_1"))
         
-    bot.reply_to(message, f"✅ **Name:** `{u_name}`\n\nNiche se style chunein:", reply_markup=markup, parse_mode="Markdown")
+    bot.reply_to(message, f"✅ **Name:** `{u_name}`\nSelect a mode:", reply_markup=markup, parse_mode="Markdown")
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("sel_"))
 def select_filter(call):
@@ -134,6 +135,7 @@ def select_filter(call):
     user_sessions[u_id]["mode"] = mode
     
     markup = types.InlineKeyboardMarkup(row_width=2)
+    # Buttons for all 19 fonts
     markup.add(
         types.InlineKeyboardButton("ꜱᴍᴀʟʟᴄᴀᴘ", callback_data="f_small"),
         types.InlineKeyboardButton("𝐁𝐨𝐥𝐝", callback_data="f_bold_sans"),
@@ -162,17 +164,16 @@ def handle_font(call):
     font = call.data.split("_")[1]
     u_id = call.from_user.id
     if u_id not in user_sessions: return
-    user_sessions[u_id]["font"] = font
-    bot.answer_callback_query(call.id, text="Generating designs...")
     
-    # YE CHANGE KIYA: Ab designs function call hoga
+    user_sessions[u_id]["font"] = font
+    bot.answer_callback_query(call.id, text="Generating designs from JSON...")
     show_designs(call.message, u_id)
 
 # ===============================
-# POLLING
+# START BOT
 # ===============================
 def start_bot():
-    print("🤖 Bot Online!")
+    print("🤖 Bot is Online and reading my_designs.json!")
     bot.infinity_polling(skip_pending=True)
 
 Thread(target=start_bot).start()
