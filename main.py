@@ -74,9 +74,9 @@ def show_designs(message, u_id, start_index=0):
     target_list = current_designs.get(mode, [])
     
     if not target_list:
-        return bot.send_message(message.chat.id, "❌ No designs found in JSON!")
+        return bot.send_message(message.chat.id, "❌ No designs found!")
 
-    # 10 Designs slice
+    # 10 Designs ka slice nikalna
     end_index = start_index + 10
     page_designs = target_list[start_index:end_index]
     
@@ -87,20 +87,29 @@ def show_designs(message, u_id, start_index=0):
         if len(words) < 2: return
         styled = [apply_font(words[0], font), apply_font(" ".join(words[1:]), font)]
 
-    output_text = f"🎨 **Designs ({start_index + 1}-{min(end_index, len(target_list))}):**\n\n"
+    # --- YAHAN HAI MAIN CHANGE ---
+    # Saare designs ko ek string (list_output) mein jama karna
+    list_output = []
     for d in page_designs:
         try:
             placeholders = d.count("{}")
             formatted = d.format(*styled[:placeholders]) if placeholders > 0 else d
-            output_text += f"`{formatted}`\n\n"
-        except Exception as e:
+            # Har design ko code format (backticks) mein daalna taaki click-to-copy ho sake
+            list_output.append(f"`{formatted}`")
+        except:
             continue
 
+    # Saare designs ko newline (\n) se jod kar ek bada message banana
+    final_message = f"🎨 **Your Designs ({start_index + 1}-{min(end_index, len(target_list))}):**\n\n"
+    final_message += "\n\n".join(list_output) 
+
+    # Next Button ka logic
     markup = types.InlineKeyboardMarkup()
     if end_index < len(target_list):
         markup.add(types.InlineKeyboardButton("➡️ Next 10 Designs", callback_data=f"next_{end_index}"))
     
-    bot.send_message(message.chat.id, output_text, parse_mode="Markdown", reply_markup=markup)
+    # EK HI MESSAGE BHEJNA
+    bot.send_message(message.chat.id, final_message, parse_mode="Markdown", reply_markup=markup)
 
 # ===============================
 # HANDLERS
