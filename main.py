@@ -14,13 +14,28 @@ app = Flask(__name__)
 def home(): return "Bot is running 24/7!"
 
 TOKEN = os.getenv("BOT_TOKEN")
-OWNER_ID = int(os.getenv("OWNER_ID", "0"))
 bot = telebot.TeleBot(TOKEN)
 
 user_sessions = {}
 
 # ===============================
-# FONT ENGINE (All 19 Styles)
+# DESIGNS DATA (Added back for generation)
+# ===============================
+designs_list = {
+    "1": [
+        "🤍 ⍣⃪‌ {} ❛𝆺𝅥𓆪ꪾ™", "🔥 {} 🝐", "➺ {} ✦", "❛ {} 💗", "🐼 {}", "🦁 {} ⚡",
+        "𓆰⎯꯭꯭֯‌{}𓂃ֶꪳ 𓆩〭〬🔥𓆪ꪾ", ".𝁘ໍ⎯꯭‌- {} ⌯ 𝘅𝗗 𓂃⎯꯭‌ ִֶָ ֺ🎀", "𓂃❛ ⟶‌{} ❜ 🌙⤹🌸",
+        "🍹𝆺𝅥⃝🤍 ‌⃪‌ ᷟ●{}🤍᪳𝆺꯭𝅥⎯꯭‌⎯꯭", "⋆⎯፝֟፝֟⎯᪵ 𝆺꯭𝅥{} ᭄꯭🦋꯭᪳᪳᪻⎯‌⎯🐣", "⟶‌ꭙ⋆🔥𓆩〬 {}⎯᳝֟፝֟⎯‌ꭙ⋆🔥"
+    ],
+    "2": [
+        "🔥 {} ⚔️ {} 🔥", "👑 {} ✨ {} 👑", "꧁ {} 💎 {} ꧂", 
+        "⚡ {} 🦁 {} ⚡", "🦁 {} 🦁 {} 🦁", "🦅 {} 🌀 {} 🦅",
+        "𓆩❥⃝🌸{}🌸⃝❥𓆪", "◄⏤❥⃝🦋{}🦋⃝❥⏤►"
+    ]
+}
+
+# ===============================
+# FONT ENGINE (All 19 Styles Kept)
 # ===============================
 def apply_font(text, font_type):
     text = text.lower()
@@ -47,6 +62,29 @@ def apply_font(text, font_type):
     }
     target = m.get(font_type, {})
     return "".join(target.get(c, c) for c in text)
+
+# ===============================
+# DESIGNS GENERATOR FUNCTION (Fix)
+# ===============================
+def show_designs(message, u_id):
+    data = user_sessions.get(u_id)
+    text, font, mode = data["text"], data["font"], data["mode"]
+    words = text.split()
+    
+    if mode == "1":
+        styled = [apply_font(text, font)]
+    else:
+        if len(words) < 2:
+            return bot.send_message(message.chat.id, "⚠️ VIP style needs 2 words.")
+        styled = [apply_font(words[0], font), apply_font(" ".join(words[1:]), font)]
+
+    target_designs = designs_list.get(mode, [])
+    
+    bot.send_message(message.chat.id, f"✨ **Designs for:** `{text}`")
+    for d in target_designs:
+        try:
+            bot.send_message(message.chat.id, f"`{d.format(*styled)}`", parse_mode="Markdown")
+        except: continue
 
 # ===============================
 # COMMANDS
@@ -81,11 +119,9 @@ def start_name(message):
     markup = types.InlineKeyboardMarkup()
     
     if len(words) >= 2:
-        # Agar 2 words hain toh dono option dikhao
-        markup.add(types.InlineKeyboardButton("1️⃣ Single Filter", callback_data="sel_1"))
-        markup.add(types.InlineKeyboardButton("2️⃣ VIP Double Filter", callback_data="sel_2"))
+        markup.add(types.InlineKeyboardButton("1️⃣ Single Filter", callback_data="sel_1"),
+                   types.InlineKeyboardButton("2️⃣ VIP Double Filter", callback_data="sel_2"))
     else:
-        # Agar 1 word hai toh sirf Single Filter
         markup.add(types.InlineKeyboardButton("✨ Apply Filters", callback_data="sel_1"))
         
     bot.reply_to(message, f"✅ **Name:** `{u_name}`\n\nNiche se style chunein:", reply_markup=markup, parse_mode="Markdown")
@@ -127,10 +163,10 @@ def handle_font(call):
     u_id = call.from_user.id
     if u_id not in user_sessions: return
     user_sessions[u_id]["font"] = font
-    user_sessions[u_id]["page"] = 0
-    bot.answer_callback_query(call.id, text="Applying style...")
-    # Iske baad aapka show_designs function chalega...
-    # (Note: Baaki show_designs function wahi rahega jo aapne pehle likha tha)
+    bot.answer_callback_query(call.id, text="Generating designs...")
+    
+    # YE CHANGE KIYA: Ab designs function call hoga
+    show_designs(call.message, u_id)
 
 # ===============================
 # POLLING
