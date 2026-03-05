@@ -162,7 +162,7 @@ def select_filter(call):
                types.InlineKeyboardButton("🇬🇷 Greek", callback_data="f_greek"),
                types.InlineKeyboardButton("💲 Money", callback_data="f_currency"),
                types.InlineKeyboardButton("⒜ Paren", callback_data="f_paren"),
-               types.InlineKeyboardButton("𝕋𝕙𝕚𝕟", callback_data="f_thin")
+               types.InlineKeyboardButton("𝕋𝕙𝕚𝕟", callback_data="f_thin"),
                types.InlineKeyboardButton("🇷 🇪 🇬 🇮 🇴 🇳 🇦 🇱", callback_data="f_regional"))
     
     bot.edit_message_text("🎨 **Select Font Style**", call.message.chat.id, call.message.message_id, reply_markup=markup)
