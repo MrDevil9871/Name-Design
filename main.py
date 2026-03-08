@@ -130,7 +130,7 @@ def handle_next_page(call):
 def welcome(message):
     bot.reply_to(message, "👋 **Bot Online!**\nUse `/name [Your Name]` to start.")
 
-@bot.message_handler(commands=['name'])
+@bot.message_handler(commands=['name', 'Name', 'NAME'])
 def start_name(message):
     args = message.text.split(maxsplit=1)
     if len(args) < 2: return bot.reply_to(message, "⚠️ Usage: `/name Rahul`")
@@ -152,7 +152,7 @@ def select_filter(call):
     u_id = call.from_user.id
     if u_id in user_sessions: user_sessions[u_id]["mode"] = mode
     
-    markup = types.InlineKeyboardMarkup(row_width=2)
+    markup = types.InlineKeyboardMarkup(row_width=3)
     markup.add(types.InlineKeyboardButton("ꜱᴍᴀʟʟ", callback_data="f_small"),
                types.InlineKeyboardButton("𝐁𝐨𝐥𝐝", callback_data="f_bold_sans"),
                types.InlineKeyboardButton("𝘐𝘵𝘢𝘭𝘪𝘤", callback_data="f_italic_bold"),
