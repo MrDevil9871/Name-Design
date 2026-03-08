@@ -209,7 +209,7 @@ def select_filter(call):
                types.InlineKeyboardButton("ᗩ ᗷ ᑕ (STORM)", callback_data="f_storm"),
                types.InlineKeyboardButton("α в ¢ (DRAMA)", callback_data="f_drama"),
                types.InlineKeyboardButton("乃 匚 刀 (DIAMOND)", callback_data="f_diamond"),
-               types.InlineKeyboardButton("Ъ с ď (CLOUD)", callback_data="f_cloud")
+               types.InlineKeyboardButton("Ъ с ď (CLOUD)", callback_data="f_cloud"),
                types.InlineKeyboardButton("🇧 🇴 🇹 (FLAG)", callback_data="f_flag_font"))
     
     bot.edit_message_text("🎨 **Select Font Style**", call.message.chat.id, call.message.message_id, reply_markup=markup)
