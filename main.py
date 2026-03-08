@@ -172,7 +172,7 @@ def select_filter(call):
                types.InlineKeyboardButton("💲 Money", callback_data="f_currency"),
                types.InlineKeyboardButton("⒜ Paren", callback_data="f_paren"),
                types.InlineKeyboardButton("𝕋𝕙𝕚𝕟", callback_data="f_thin"),
-               types.InlineKeyboardButton("🇷 🇪 🇬 🇮 🇴 🇳 🇦 🇱", callback_data="f_regional")
+               types.InlineKeyboardButton("🇷 🇪 🇬 🇮 🇴 🇳 🇦 🇱", callback_data="f_regional"),
                types.InlineKeyboardButton("λ ß ç (FLASH)", callback_data="f_flash"),
                types.InlineKeyboardButton("ɐ q ɔ (MIRROR)", callback_data="f_mirror"),
                types.InlineKeyboardButton("ą ҍ ç (WEB)", callback_data="f_web"),
