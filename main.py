@@ -57,7 +57,16 @@ def apply_font(text, font_type):
         "slant": {'a': '𝘢', 'b': '𝘣', 'c': '𝘤', 'd': '𝘥', 'e': '𝘦', 'f': '𝘧', 'g': '𝘨', 'h': '𝘩', 'i': '𝘪', 'j': '𝘫', 'k': '𝘬', 'l': '𝘭', 'm': '𝘮', 'n': '𝘯', 'o': '𝘰', 'p': '𝘱', 'q': '𝘲', 'r': '𝘳', 's': '𝘴', 't': '𝘵', 'u': '𝕦', 'v': '𝘷', 'w': '𝘸', 'x': '𝘹', 'y': '𝘺', 'z': '𝘻'},
         "comic": {'a': '𝓬', 'b': '𝓫', 'c': '𝓬', 'd': '𝓭', 'e': '𝓮', 'f': '𝓯', 'g': '𝓰', 'h': '𝓱', 'i': '𝓲', 'j': '𝓳', 'k': '𝓴', 'l': '𝓵', 'm': '𝓶', 'n': '𝓷', 'o': '𝓸', 'p': '𝓹', 'q': '𝓺', 'r': '𝓻', 's': '𝓼', 't': '𝓽', 'u': '𝓾', 'v': '𝓿', 'w': '𝔀', 'x': '𝔁', 'y': '𝔂', 'z': '𝔃'},
         "regional": {'a': '🇦', 'b': '🇧', 'c': '🇨', 'd': '🇩', 'e': '🇪', 'f': '🇫', 'g': '🇬', 'h': '🇭','i': '🇮', 'j': '🇯', 'k': '🇰', 'l': '🇱', 'm': '🇲', 'n': '🇳', 'o': '🇴', 'p': '🇵','q': '🇶', 'r': '🇷', 's': '🇸', 't': '🇹', 'u': '🇺', 'v': '🇻', 'w': '🇼', 'x': '🇽','y': '🇾', 'z': '🇿'}
-    }
+        "flash": {'a': 'λ', 'b': 'ß', 'c': 'ç', 'd': 'Ð', 'e': 'È', 'f': '₣', 'g': '₲', 'h': 'Ħ', 'i': 'Ì', 'j': 'Ĵ', 'k': '₭', 'l': 'Ł', 'm': '₥', 'n': 'Ñ', 'o': 'Ö', 'p': '₱', 'q': 'Ø', 'r': 'ℜ', 's': '§', 't': '₮', 'u': 'Ü', 'v': 'V', 'w': '₩', 'x': 'Ӿ', 'y': '¥', 'z': 'Ƶ'},
+        "mirror": {'a': 'ɐ', 'b': 'q', 'c': 'ɔ', 'd': 'p', 'e': 'ǝ', 'f': 'ɟ', 'g': 'ƃ', 'h': 'ɥ', 'i': 'ᴉ', 'j': 'ɾ', 'k': 'ʞ', 'l': 'l', 'm': 'ɯ', 'n': 'u', 'o': 'o', 'p': 'd', 'q': 'b', 'r': 'ɹ', 's': 's', 't': 'ʇ', 'u': 'n', 'v': 'ʌ', 'w': 'ʍ', 'x': 'x', 'y': 'ʎ', 'z': 'z'},
+        "web": {'a': 'ą', 'b': 'ҍ', 'c': 'ç', 'd': 'ժ', 'e': 'ҽ', 'f': 'ƒ', 'g': 'ց', 'h': 'հ', 'i': 'ì', 'j': 'ʝ', 'k': 'ҟ', 'l': 'Ӏ', 'm': 'ʍ', 'n': 'ղ', 'o': 'օ', 'p': 'ք', 'q': 'զ', 'r': 'ɾ', 's': 'ʂ', 't': 'է', 'u': 'մ', 'v': 'ѵ', 'w': 'ա', 'x': '×', 'y': 'վ', 'z': 'Հ'},
+        "ancient": {'a': 'ǟ', 'b': 'ɮ', 'c': 'ƈ', 'd': 'ɖ', 'e': 'ɛ', 'f': 'ʄ', 'g': 'ɢ', 'h': 'ɦ', 'i': 'ɨ', 'j': 'ʝ', 'k': 'ӄ', 'l': 'ʟ', 'm': 'ʍ', 'n': 'ռ', 'o': 'օ', 'p': 'ք', 'q': 'զ', 'r': 'ʀ', 's': 'ֆ', 't': 'ȶ', 'u': 'ʊ', 'v': 'ʋ', 'w': 'ա', 'x': 'Ӽ', 'y': 'ʏ', 'z': 'ʐ'},
+        "knight": {'a': 'Δ', 'b': 'β', 'c': 'Ć', 'd': 'Đ', 'e': '€', 'f': '₣', 'g': 'Ǥ', 'h': 'Ħ', 'i': 'Ɨ', 'j': 'Ĵ', 'k': 'Ҝ', 'l': 'Ł', 'm': 'Μ', 'n': 'Ň', 'o': 'Ø', 'p': 'Ƥ', 'q': 'Ω', 'r': 'Ř', 's': 'Ş', 't': 'Ŧ', 'u': 'Ữ', 'v': 'V', 'w': 'Ŵ', 'x': 'Ж', 'y': '¥', 'z': 'Ž'},
+        "storm": {'a': 'ᗩ', 'b': 'ᗷ', 'c': 'ᑕ', 'd': 'ᗪ', 'e': 'E', 'f': 'ᖴ', 'g': 'G', 'h': 'ᕼ', 'i': 'I', 'j': 'ᒍ', 'k': 'K', 'l': 'ᒪ', 'm': 'ᗰ', 'n': 'ᑎ', 'o': 'O', 'p': 'ᑭ', 'q': 'ᑫ', 'r': 'ᖇ', 's': 'ᔕ', 't': 'T', 'u': 'ᑌ', 'v': 'ᐯ', 'w': 'ᗯ', 'x': '᙭', 'y': 'Y', 'z': 'ᘔ'},
+        "drama": {'a': 'α', 'b': 'в', 'c': '¢', 'd': '∂', 'e': 'є', 'f': 'ƒ', 'g': 'g', 'h': 'н', 'i': 'ι', 'j': 'נ', 'k': 'к', 'l': 'ℓ', 'm': 'м', 'n': 'η', 'o': 'σ', 'p': 'ρ', 'q': 'ף', 'r': 'я', 's': 'ѕ', 't': 'т', 'u': 'υ', 'v': 'ν', 'w': 'ω', 'x': 'χ', 'y': 'у', 'z': 'z'},
+        "diamond": {'a': '闩', 'b': '乃', 'c': '匚', 'd': '刀', 'e': '乇', 'f': '下', 'g': '厶', 'h': '卄', 'i': '工', 'j': '丁', 'k': '长', 'l': '乚', 'm': '从', 'n': '𠘨', 'o': '口', 'p': '尸', 'q': '㔿', 'r': '尺', 's': '丂', 't': '丅', 'u': '凵',  'v': 'リ', 'w': '山', 'x': '乂', 'y': '丫', 'z': '乙'},
+        "cloud": {'a': 'α', 'b': 'Ъ', 'c': 'с', 'd': 'ď', 'e': 'є', 'f': 'ƒ', 'g': 'ģ', 'h': 'н', 'i': 'ї', 'j': 'ĵ', 'k': 'к', 'l': 'ℓ', 'm': 'м', 'n': 'и', 'o': 'о', 'p': 'р', 'q': 'φ', 'r': 'я', 's': 'ร', 't': 'т', 'u': 'ц', 'v': 'v', 'w': 'ω', 'x': 'х', 'y': 'у', 'z': 'ž'},
+}
     target = m.get(font_type, {})
     return "".join(target.get(c, c) for c in text)
 
@@ -163,7 +172,16 @@ def select_filter(call):
                types.InlineKeyboardButton("💲 Money", callback_data="f_currency"),
                types.InlineKeyboardButton("⒜ Paren", callback_data="f_paren"),
                types.InlineKeyboardButton("𝕋𝕙𝕚𝕟", callback_data="f_thin"),
-               types.InlineKeyboardButton("🇷 🇪 🇬 🇮 🇴 🇳 🇦 🇱", callback_data="f_regional"))
+               types.InlineKeyboardButton("🇷 🇪 🇬 🇮 🇴 🇳 🇦 🇱", callback_data="f_regional")
+               types.InlineKeyboardButton("λ ß ç (FLASH)", callback_data="f_flash"),
+               types.InlineKeyboardButton("ɐ q ɔ (MIRROR)", callback_data="f_mirror"),
+               types.InlineKeyboardButton("ą ҍ ç (WEB)", callback_data="f_web"),
+               types.InlineKeyboardButton("ǟ ɮ ƈ (ANCIENT)", callback_data="f_ancient"),
+               types.InlineKeyboardButton("Δ β Ć (KNIGHT)", callback_data="f_knight"),
+               types.InlineKeyboardButton("ᗩ ᗷ ᑕ (STORM)", callback_data="f_storm"),
+               types.InlineKeyboardButton("α в ¢ (DRAMA)", callback_data="f_drama"),
+               types.InlineKeyboardButton("乃 匚 刀 (DIAMOND)", callback_data="f_diamond"),
+               types.InlineKeyboardButton("Ъ с ď (CLOUD)", callback_data="f_cloud"))
     
     bot.edit_message_text("🎨 **Select Font Style**", call.message.chat.id, call.message.message_id, reply_markup=markup)
 
