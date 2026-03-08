@@ -56,7 +56,6 @@ def apply_font(text, font_type):
         "gothic": {'a': '𝖇', 'b': '𝖇', 'c': '𝖈', 'd': '𝖉', 'e': '𝖊', 'f': '𝖋', 'g': '𝖌', 'h': '𝖍', 'i': '𝖎', 'j': '𝖏', 'k': '𝖐', 'l': '𝖑', 'm': '𝖒', 'n': '𝖓', 'o': '𝖔', 'p': '𝖕', 'q': '𝖖', 'r': '𝖗', 's': '𝖘', 't': '𝖙', 'u': '𝖚', 'v': '𝖛', 'w': '𝖜', 'x': '𝖝', 'y': '𝖞', 'z': '𝖟'},
         "slant": {'a': '𝘢', 'b': '𝘣', 'c': '𝘤', 'd': '𝘥', 'e': '𝘦', 'f': '𝘧', 'g': '𝘨', 'h': '𝘩', 'i': '𝘪', 'j': '𝘫', 'k': '𝘬', 'l': '𝘭', 'm': '𝘮', 'n': '𝘯', 'o': '𝘰', 'p': '𝘱', 'q': '𝘲', 'r': '𝘳', 's': '𝘴', 't': '𝘵', 'u': '𝕦', 'v': '𝘷', 'w': '𝘸', 'x': '𝘹', 'y': '𝘺', 'z': '𝘻'},
         "comic": {'a': '𝓬', 'b': '𝓫', 'c': '𝓬', 'd': '𝓭', 'e': '𝓮', 'f': '𝓯', 'g': '𝓰', 'h': '𝓱', 'i': '𝓲', 'j': '𝓳', 'k': '𝓴', 'l': '𝓵', 'm': '𝓶', 'n': '𝓷', 'o': '𝓸', 'p': '𝓹', 'q': '𝓺', 'r': '𝓻', 's': '𝓼', 't': '𝓽', 'u': '𝓾', 'v': '𝓿', 'w': '𝔀', 'x': '𝔁', 'y': '𝔂', 'z': '𝔃'},
-        "regional": {'a': '🇦', 'b': '🇧', 'c': '🇨', 'd': '🇩', 'e': '🇪', 'f': '🇫', 'g': '🇬', 'h': '🇭','i': '🇮', 'j': '🇯', 'k': '🇰', 'l': '🇱', 'm': '🇲', 'n': '🇳', 'o': '🇴', 'p': '🇵','q': '🇶', 'r': '🇷', 's': '🇸', 't': '🇹', 'u': '🇺', 'v': '🇻', 'w': '🇼', 'x': '🇽','y': '🇾', 'z': '🇿'},
         "flash": {'a': 'λ', 'b': 'ß', 'c': 'ç', 'd': 'Ð', 'e': 'È', 'f': '₣', 'g': '₲', 'h': 'Ħ', 'i': 'Ì', 'j': 'Ĵ', 'k': '₭', 'l': 'Ł', 'm': '₥', 'n': 'Ñ', 'o': 'Ö', 'p': '₱', 'q': 'Ø', 'r': 'ℜ', 's': '§', 't': '₮', 'u': 'Ü', 'v': 'V', 'w': '₩', 'x': 'Ӿ', 'y': '¥', 'z': 'Ƶ'},
         "mirror": {'a': 'ɐ', 'b': 'q', 'c': 'ɔ', 'd': 'p', 'e': 'ǝ', 'f': 'ɟ', 'g': 'ƃ', 'h': 'ɥ', 'i': 'ᴉ', 'j': 'ɾ', 'k': 'ʞ', 'l': 'l', 'm': 'ɯ', 'n': 'u', 'o': 'o', 'p': 'd', 'q': 'b', 'r': 'ɹ', 's': 's', 't': 'ʇ', 'u': 'n', 'v': 'ʌ', 'w': 'ʍ', 'x': 'x', 'y': 'ʎ', 'z': 'z'},
         "web": {'a': 'ą', 'b': 'ҍ', 'c': 'ç', 'd': 'ժ', 'e': 'ҽ', 'f': 'ƒ', 'g': 'ց', 'h': 'հ', 'i': 'ì', 'j': 'ʝ', 'k': 'ҟ', 'l': 'Ӏ', 'm': 'ʍ', 'n': 'ղ', 'o': 'օ', 'p': 'ք', 'q': 'զ', 'r': 'ɾ', 's': 'ʂ', 't': 'է', 'u': 'մ', 'v': 'ѵ', 'w': 'ա', 'x': '×', 'y': 'վ', 'z': 'Հ'},
@@ -66,7 +65,8 @@ def apply_font(text, font_type):
         "drama": {'a': 'α', 'b': 'в', 'c': '¢', 'd': '∂', 'e': 'є', 'f': 'ƒ', 'g': 'g', 'h': 'н', 'i': 'ι', 'j': 'נ', 'k': 'к', 'l': 'ℓ', 'm': 'м', 'n': 'η', 'o': 'σ', 'p': 'ρ', 'q': 'ף', 'r': 'я', 's': 'ѕ', 't': 'т', 'u': 'υ', 'v': 'ν', 'w': 'ω', 'x': 'χ', 'y': 'у', 'z': 'z'},
         "diamond": {'a': '闩', 'b': '乃', 'c': '匚', 'd': '刀', 'e': '乇', 'f': '下', 'g': '厶', 'h': '卄', 'i': '工', 'j': '丁', 'k': '长', 'l': '乚', 'm': '从', 'n': '𠘨', 'o': '口', 'p': '尸', 'q': '㔿', 'r': '尺', 's': '丂', 't': '丅', 'u': '凵',  'v': 'リ', 'w': '山', 'x': '乂', 'y': '丫', 'z': '乙'},
         "cloud": {'a': 'α', 'b': 'Ъ', 'c': 'с', 'd': 'ď', 'e': 'є', 'f': 'ƒ', 'g': 'ģ', 'h': 'н', 'i': 'ї', 'j': 'ĵ', 'k': 'к', 'l': 'ℓ', 'm': 'м', 'n': 'и', 'o': 'о', 'p': 'р', 'q': 'φ', 'r': 'я', 's': 'ร', 't': 'т', 'u': 'ц', 'v': 'v', 'w': 'ω', 'x': 'х', 'y': 'у', 'z': 'ž'},
-}
+        "flag_font": {'a': '🇦 ', 'b': '🇧 ', 'c': '🇨 ', 'd': '🇩 ', 'e': '🇪 ', 'f': '🇫 ', 'g': '🇬 ', 'h': '🇭 ', 'i': '🇮 ', 'j': '🇯 ', 'k': '🇰 ', 'l': '🇱 ', 'm': '🇲 ', 'n': '🇳 ', 'o': '🇴 ', 'p': '🇵 ', 'q': '🇶 ', 'r': '🇷 ', 's': '🇸 ', 't': '🇹 ', 'u': '🇺 ', 'v': '🇻 ', 'w': '🇼 ', 'x': '🇽 ', 'y': '🇾 ', 'z': '🇿 '},
+    }
     target = m.get(font_type, {})
     return "".join(target.get(c, c) for c in text)
 
@@ -128,12 +128,34 @@ def handle_next_page(call):
 
 @bot.message_handler(commands=['start'])
 def welcome(message):
-    bot.reply_to(message, "👋 **Bot Online!**\nUse `/name [Your Name]` to start.")
+    bot.reply_to(message, "╭────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ───⏤‌‌‌‌★
+┆● ʜᴇʏ  : {full_name} ,
+┆● ɪ ᴀᴍ : ᴇᴀsʏ ɴᴀᴍᴇ ᴅᴇsɪɢɴᴇʀ
+┆● ᴡɪᴛʜ ᴘᴏᴡᴇʀғᴜʟ ғᴇᴀᴛᴜʀᴇs
+┊● ɪ ᴀᴍ ᴀ sᴛʏʟɪsʜ ɴᴀᴍᴇ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ
+╰─────────────────────────
+──────────────────────────
+❖ ɪ ᴀᴍ ᴀ sᴛʏʟɪsʜ ɴᴀᴍᴇ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ
+  ᴡɪᴛʜ ᴍᴀɴʏ ᴛʏᴘᴇ sᴛʏʟɪsʜ ғᴏɴᴛ
+──────────────────────────
+    📖 ʜᴏᴡ ᴛᴏ ᴜsᴇ (sᴛᴇᴘ ʙʏ sᴛᴇᴘ)
+──────────────────────────
+❖ sᴛᴇᴘ 1: /ɴᴀᴍᴇ ᴄᴏᴍᴍᴀɴᴅ ʟɪᴋʜᴏ.
+❖ sᴛᴇᴘ 2: ᴜsᴋᴇ ᴀᴀɢᴇ ᴀᴘɴᴀ sɪɴɢʟᴇ ʏᴀ ᴅᴏᴜʙʟᴇ ɴᴀᴀᴍ ʟɪᴋʜᴏ.
+
+   ❖(ᴇx: 1. /ɴᴀᴍᴇ ʜᴇʟʟᴏ 
+   ❖(ᴇx: 2. /ɴᴀᴍᴇ ʜᴇʟʟᴏ ᴡᴏʀʟᴅ
+
+❖ sᴛᴇᴘ 3: ᴀɢᴀʀ 2 ᴡᴏʀᴅs ʜᴀɪɴ, ᴛᴏʜ ʙᴏᴛ ᴘᴜᴄʜᴇɢᴀ:
+   1️⃣ sɪɴɢʟᴇ ғɪʟᴛᴇʀ: ᴘᴏᴏʀᴇ ɴᴀᴀᴍ ᴘᴀʀ ᴇᴋ ᴊᴀɪsᴀ ғᴏɴᴛ.
+   2️⃣ ᴠɪᴘ ᴅᴏᴜʙʟᴇ: ᴅᴏɴᴏ ᴡᴏʀᴅs ᴘᴀʀ ᴀʟᴀɢ-ᴀʟᴀɢ ᴅᴇsɪɢɴ.
+❖ sᴛᴇᴘ 4: ᴀᴘɴᴇ ᴘᴀsᴀɴᴅ ᴋᴀ ʙᴜᴛᴛᴏɴ ᴅᴀʙᴀʏᴇɪɴ ᴀᴜʀ ʀᴇsᴜʟᴛ ᴄᴏᴘʏ ᴋᴀʀᴇɪɴ!
+──────────────────────────")
 
 @bot.message_handler(commands=['name', 'Name', 'NAME'])
 def start_name(message):
     args = message.text.split(maxsplit=1)
-    if len(args) < 2: return bot.reply_to(message, "⚠️ Usage: `/name Rahul`")
+    if len(args) < 2: return bot.reply_to(message, "⚠️ Usage: `/name ʜᴇʟʟᴏ`")
     u_id = message.from_user.id
     user_sessions[u_id] = {"text": args[1], "font": "small", "mode": "1"}
     
@@ -172,7 +194,6 @@ def select_filter(call):
                types.InlineKeyboardButton("💲 Money", callback_data="f_currency"),
                types.InlineKeyboardButton("⒜ Paren", callback_data="f_paren"),
                types.InlineKeyboardButton("𝕋𝕙𝕚𝕟", callback_data="f_thin"),
-               types.InlineKeyboardButton("🇷 🇪 🇬 🇮 🇴 🇳 🇦 🇱", callback_data="f_regional"),
                types.InlineKeyboardButton("λ ß ç (FLASH)", callback_data="f_flash"),
                types.InlineKeyboardButton("ɐ q ɔ (MIRROR)", callback_data="f_mirror"),
                types.InlineKeyboardButton("ą ҍ ç (WEB)", callback_data="f_web"),
@@ -181,7 +202,8 @@ def select_filter(call):
                types.InlineKeyboardButton("ᗩ ᗷ ᑕ (STORM)", callback_data="f_storm"),
                types.InlineKeyboardButton("α в ¢ (DRAMA)", callback_data="f_drama"),
                types.InlineKeyboardButton("乃 匚 刀 (DIAMOND)", callback_data="f_diamond"),
-               types.InlineKeyboardButton("Ъ с ď (CLOUD)", callback_data="f_cloud"))
+               types.InlineKeyboardButton("Ъ с ď (CLOUD)", callback_data="f_cloud")
+               types.InlineKeyboardButton("🇧 🇴 🇹 (FLAG)", callback_data="f_flag_font"))
     
     bot.edit_message_text("🎨 **Select Font Style**", call.message.chat.id, call.message.message_id, reply_markup=markup)
 
