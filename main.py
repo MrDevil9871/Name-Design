@@ -321,7 +321,7 @@ def start_bot():
     bot.infinity_polling(skip_pending=True)
 
 if __name__ == "__main__":
-    t = threading.Thread(target=start_bot)
+    t = Thread(target=start_bot)
     t.daemon = True   # 🔥 VERY IMPORTANT
     t.start()
 
