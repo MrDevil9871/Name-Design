@@ -35,8 +35,6 @@ def load_designs_from_file():
 # FONT ENGINE
 # ===============================
 def apply_font(text, font_type):
-    # Sirf flag font ke liye uppercase
-    def apply_font(text, font_type):
     text = text.upper() 
 
     m = {
