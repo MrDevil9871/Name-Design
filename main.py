@@ -35,7 +35,12 @@ def load_designs_from_file():
 # FONT ENGINE
 # ===============================
 def apply_font(text, font_type):
-    text = text.lower()
+        # Agar font "flag_font" nahi hai, tabhi lower karein
+    if font_type != "flag_font":
+        text = text.lower()
+    else:
+        # Flag font ke liye text ko Uppercase karna zaroori hai
+        text = text.upper()
     m = {
         "block": {'a': '🅻', 'b': '🅱️', 'c': '🅲', 'd': '🅳', 'e': '🅴', 'f': '🅵', 'g': '🅶', 'h': '🅷', 'i': '🅸', 'j': '🅹', 'k': '🅺', 'l': '🅻', 'm': '🅼', 'n': '🅽', 'o': '🅾️', 'p': '🅿️', 'q': '🆀', 'r': '🆁', 's': '🆂', 't': '🆃', 'u': '🆄', 'v': '🆅', 'w': '🆆', 'x': '🆇', 'y': '🆈', 'z': '🆉'},
         "circle": {'a': '🅐', 'b': '🅑', 'c': '🅒', 'd': '🅓', 'e': '🅔', 'f': '🅕', 'g': '🅖', 'h': '🅗', 'i': '🅘', 'j': '🅙', 'k': '🅚', 'l': '🅛', 'm': '🅜', 'n': '🅝', 'o': '🅞', 'p': '🅟', 'q': '🅠', 'r': '🅡', 's': '🅢', 't': '🅣', 'u': '🅤', 'v': '🅥', 'w': '🅦', 'x': '🅧', 'y': '🅨', 'z': '🅩'},
@@ -106,8 +111,8 @@ def show_designs(message, u_id, start_index=0):
             formatted = d.format(*styled[:placeholders]) if placeholders > 0 else d
             # Yahan hum har design ko alag message mein bhej rahe hain
             bot.send_message(message.chat.id, f"`{formatted}`", parse_mode="Markdown")
-            # 1.5 Second ka wait (Timer)
-            time.sleep(1.5)
+            # 1 Second ka wait (Timer)
+            time.sleep(1)
         except Exception as e:
             print(f"Error in loop: {e}")
             continue
