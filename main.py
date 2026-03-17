@@ -11,7 +11,7 @@ load_dotenv()
 app = Flask(__name__)
 
 @app.route('/')
-def home(): return "Bot is running!"
+def home(): return "Bot Is Running By Dear!"
 
 TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
@@ -106,7 +106,10 @@ def show_designs(message, u_id, start_index=0):
             formatted = d.format(*styled[:placeholders]) if placeholders > 0 else d
             # Yahan hum har design ko alag message mein bhej rahe hain
             bot.send_message(message.chat.id, f"`{formatted}`", parse_mode="Markdown")
-        except:
+            # 1.5 Second ka wait (Timer)
+            time.sleep(1.5)
+        except Exception as e:
+            print(f"Error in loop: {e}")
             continue
 
     # Next Button ka message (Alag se)
@@ -145,11 +148,11 @@ def welcome(message):
 ──────────────────────────
     📖 ʜᴏᴡ ᴛᴏ ᴜsᴇ (sᴛᴇᴘ ʙʏ sᴛᴇᴘ)
 ──────────────────────────
-❖ sᴛᴇᴘ 1: /ɴᴀᴍᴇ ᴄᴏᴍᴍᴀɴᴅ ʟɪᴋʜᴏ.
+❖ sᴛᴇᴘ 1: /name ᴄᴏᴍᴍᴀɴᴅ ʟɪᴋʜᴏ.
 ❖ sᴛᴇᴘ 2: ᴜsᴋᴇ ᴀᴀɢᴇ ᴀᴘɴᴀ sɪɴɢʟᴇ ʏᴀ ᴅᴏᴜʙʟᴇ ɴᴀᴀᴍ ʟɪᴋʜᴏ.
 
-   ❖(ᴇx: 1. /ɴᴀᴍᴇ ʜᴇʟʟᴏ 
-   ❖(ᴇx: 2. /ɴᴀᴍᴇ ʜᴇʟʟᴏ ᴡᴏʀʟᴅ
+   ❖(ᴇx: 1. /name ʜᴇʟʟᴏ 
+   ❖(ᴇx: 2. /name ʜᴇʟʟᴏ ᴡᴏʀʟᴅ
 
 ❖ sᴛᴇᴘ 3: ᴀɢᴀʀ 2 ᴡᴏʀᴅs ʜᴀɪɴ, ᴛᴏʜ ʙᴏᴛ ᴘᴜᴄʜᴇɢᴀ:
    1️⃣ sɪɴɢʟᴇ ғɪʟᴛᴇʀ: ᴘᴏᴏʀᴇ ɴᴀᴀᴍ ᴘᴀʀ ᴇᴋ ᴊᴀɪsᴀ ғᴏɴᴛ.
@@ -168,12 +171,12 @@ def start_name(message):
     
     markup = types.InlineKeyboardMarkup()
     if len(args[1].split()) >= 2:
-        markup.add(types.InlineKeyboardButton("1️⃣ Single Filter", callback_data="sel_1"),
-                   types.InlineKeyboardButton("2️⃣ VIP Double", callback_data="sel_2"))
+        markup.add(types.InlineKeyboardButton("1️⃣ Single Word Filter", callback_data="sel_1"),
+                   types.InlineKeyboardButton("2️⃣ Double Word Filter", callback_data="sel_2"))
     else:
         markup.add(types.InlineKeyboardButton("✨ Apply Filter", callback_data="sel_1"))
     
-    bot.reply_to(message, f"✅ Name: `{args[1]}`\nSelect Mode:", reply_markup=markup, parse_mode="Markdown")
+    bot.reply_to(message, f"✅ Name: `{args[1]}`\nBelow Apply Filter", reply_markup=markup, parse_mode="Markdown")
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("sel_"))
 def select_filter(call):
