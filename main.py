@@ -36,8 +36,8 @@ def load_designs_from_file():
 # ===============================
 def apply_font(text, font_type):
     # Sirf flag font ke liye uppercase
-    if font_type == "flag_font":
-        text = text.upper()
+    def apply_font(text, font_type):
+    text = text.upper() 
 
     m = {
         "block": {
