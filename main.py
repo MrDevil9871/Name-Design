@@ -35,12 +35,10 @@ def load_designs_from_file():
 # FONT ENGINE
 # ===============================
 def apply_font(text, font_type):
-        # Agar font "flag_font" nahi hai, tabhi lower karein
-    if font_type != "flag_font":
-        text = text.lower()
-    else:
-        # Flag font ke liye text ko Uppercase karna zaroori hai
+    # Sirf flag font ke liye uppercase
+    if font_type == "flag_font":
         text = text.upper()
+
     m = {
         "block": {
             'a': '🅻', 'b': '🅱️', 'c': '🅲', 'd': '🅳', 'e': '🅴', 'f': '🅵', 'g': '🅶', 'h': '🅷', 'i': '🅸', 'j': '🅹', 'k': '🅺', 'l': '🅻', 'm': '🅼', 'n': '🅽', 'o': '🅾️', 'p': '🅿️', 'q': '🆀', 'r': '🆁', 's': '🆂', 't': '🆃', 'u': '🆄', 'v': '🆅', 'w': '🆆', 'x': '🆇', 'y': '🆈', 'z': '🆉',
