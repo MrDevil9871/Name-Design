@@ -151,7 +151,7 @@ def apply_font(text, font_type):
     if font_type == "flag_font":
         return "".join(target.get(ch, ch) for ch in text)
     else:
-        return " ".join(target.get(ch, ch) for ch in text)
+        return "".join(target.get(ch, ch) for ch in text)
 
 
 # ===============================
