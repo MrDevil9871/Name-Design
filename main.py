@@ -168,7 +168,7 @@ def show_designs(message, u_id, start_index=0):
     target_list = current_designs.get(mode, [])
     
     if not target_list:
-        return bot.send_message(message.chat.id, "❌ No More Designs Found!")
+        return bot.send_message(message.chat.id, "❌ No Designs Found!")
 
     end_index = start_index + 10
     page_designs = target_list[start_index:end_index]
