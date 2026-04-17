@@ -33,7 +33,7 @@ def load_designs_from_file():
     return {"1": [], "2": []}
 
 # ===============================
-# FONT ENGINE
+# FONT ENGINE WITH EVERY ALPHABET
 # ===============================
 def apply_font(text, font_type):
     m = {
@@ -84,10 +84,6 @@ def apply_font(text, font_type):
         "currency": {
             'a': '₳', 'b': '฿', 'c': '₵', 'd': 'Đ', 'e': 'Ɇ', 'f': '₣', 'g': '₲', 'h': 'Ⱨ', 'i': 'ł', 'j': 'J', 'k': '₭', 'l': 'Ⱡ', 'm': '₥', 'n': '₦', 'o': 'Ø', 'p': '₱', 'q': 'Q', 'r': 'Ɽ', 's': '₴', 't': '₮', 'u': 'Ʉ', 'v': 'V', 'w': '₩', 'x': 'Ӿ', 'y': 'Ɏ', 'z': 'Ƶ',
             'A': '₳', 'B': '฿', 'C': '₵', 'D': 'Đ', 'E': 'Ɇ', 'F': '₣', 'G': '₲', 'H': 'Ⱨ', 'I': 'ł', 'J': 'J', 'K': '₭', 'L': 'Ⱡ', 'M': '₥', 'N': '₦', 'O': 'Ø', 'P': '₱', 'Q': 'Q', 'R': 'Ɽ', 'S': '₴', 'T': '₮', 'U': 'Ʉ', 'V': 'V', 'W': '₩', 'X': 'Ӿ', 'Y': 'Ɏ', 'Z': 'Ƶ'
-        },
-        "paren": {
-            'a': '⒜', 'b': '⒝', 'c': '⒞', 'd': '⒟', 'e': '⒠', 'f': '⒡', 'g': '⒢', 'h': '⒣', 'i': '⒤', 'j': '⒥', 'k': '⒦', 'l': '⒧', 'm': '⒨', 'n': '⒩', 'o': '⒪', 'p': '⒫', 'q': '⒬', 'r': '⒭', 's': '⒮', 't': '⒯', 'u': '⒰', 'v': '⒱', 'w': '⒲', 'x': '⒳', 'y': '⒴', 'z': '⒵',
-            'A': '⒜', 'B': '⒝', 'C': '⒞', 'D': '⒟', 'E': '⒠', 'F': '⒡', 'G': '⒢', 'H': '⒣', 'I': '⒤', 'J': '⒥', 'K': '⒦', 'L': '⒧', 'M': '⒨', 'N': '⒩', 'O': '⒪', 'P': '⒫', 'Q': '⒬', 'R': '⒭', 'S': '⒮', 'T': '⒯', 'U': '⒰', 'V': '⒱', 'W': '⒲', 'X': '⒳', 'Y': '⒴', 'Z': '⒵'
         },
         "bold_sans": {
             'a': '𝗮', 'b': '𝗯', 'c': '𝗰', 'd': '𝗱', 'e': '𝗲', 'f': '𝗳', 'g': '𝗴', 'h': '𝗵', 'i': '𝗶', 'j': '𝗷', 'k': '𝗸', 'l': '𝗹', 'm': '𝗺', 'n': '𝗻', 'o': '𝗼', 'p': '𝗽', 'q': '𝗾', 'r': '𝗿', 's': '𝘀', 't': '𝘁', 'u': '𝘂', 'v': '𝘃', 'w': '𝘄', 'x': '𝘅', 'y': '𝘆', 'z': '𝘇',
@@ -171,7 +167,7 @@ def show_designs(message, u_id, start_index=0):
     target_list = current_designs.get(mode, [])
     
     if not target_list:
-        return bot.send_message(message.chat.id, "❌ No designs found!")
+        return bot.send_message(message.chat.id, "❌ No More Designs Found!")
 
     end_index = start_index + 10
     page_designs = target_list[start_index:end_index]
@@ -197,7 +193,7 @@ def show_designs(message, u_id, start_index=0):
     markup = types.InlineKeyboardMarkup()
     if end_index < len(target_list):
         markup.add(types.InlineKeyboardButton("➡️ Next 10 Designs", callback_data=f"next_{end_index}"))
-        bot.send_message(message.chat.id, "Agle designs ke liye click karein:", reply_markup=markup)
+        bot.send_message(message.chat.id, "Click For More Design 👇", reply_markup=markup)
 
 # ===============================
 # HANDLERS
@@ -214,9 +210,31 @@ def welcome(message):
     full_name = message.from_user.first_name 
     
     welcome_text = f"""
-Hey {full_name} 👋
-I am Stylish Name Generator Bot
-Use /name yourname
+╭────── ˹ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ˼ ─────★
+┆● ʜᴇʏ  : {Full_Name}, 👋 
+┆● ɪ ᴀᴍ : ᴇᴀsʏ ɴᴀᴍᴇ ᴅᴇsɪɢɴᴇʀ
+┆● ᴡɪᴛʜ ᴘᴏᴡᴇʀғᴜʟ ғᴇᴀᴛᴜʀᴇs
+┊● sᴛʏʟɪsʜ ɴᴀᴍᴇ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ
+╰─────────────────────★
+───────────────────────
+❖ ˹ ɪ ᴀᴍ ᴀ sᴛʏʟɪsʜ ɴᴀᴍᴇ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ᴡɪᴛʜ ᴍᴀɴʏ ᴛʏᴘᴇ sᴛʏʟɪsʜ ғᴏɴᴛ ˼ ❖
+───────────────────────
+    📖 ʜᴏᴡ ᴛᴏ ᴜsᴇ (sᴛᴇᴘ ʙʏ sᴛᴇᴘ)
+───────────────────────
+❖ sᴛᴇᴘ 1: /name ᴄᴏᴍᴍᴀɴᴅ ʟɪᴋʜᴏ.
+❖ sᴛᴇᴘ 2: ᴜsᴋᴇ ᴀᴀɢᴇ ᴀᴘɴᴀ sɪɴɢʟᴇ ʏᴀ 
+                  ᴅᴏᴜʙʟᴇ ɴᴀᴀᴍ ʟɪᴋʜᴏ.
+
+   ❖(ᴇx: 1. /name ʜᴇʟʟᴏ 
+   ❖(ᴇx: 2. /name ʜᴇʟʟᴏ ᴡᴏʀʟᴅ
+
+❖ sᴛᴇᴘ 3: ᴀɢᴀʀ 2 ᴡᴏʀᴅs ʜᴀɪɴ, ᴛᴏʜ ʙᴏᴛ :
+   1️⃣ sɪɴɢʟᴇ ғɪʟᴛᴇʀ: ᴘᴏᴏʀᴇ ɴᴀᴀᴍ ᴘᴀʀ 
+         ᴇᴋ ᴊᴀɪsᴀ ғᴏɴᴛ.
+   2️⃣ ᴠɪᴘ ᴅᴏᴜʙʟᴇ: ᴅᴏɴᴏ ᴡᴏʀᴅs ᴘᴀʀ 
+         ᴀʟᴀɢ-ᴀʟᴀɢ ᴅᴇsɪɢɴ.
+❖ sᴛᴇᴘ 4: ᴀᴘɴᴇ ᴘᴀsᴀɴᴅ ᴋᴀ ʙᴜᴛᴛᴏɴ ᴅᴀʙᴀʏᴇɪɴ ᴀᴜʀ ʀᴇsᴜʟᴛ ᴄᴏᴘʏ ᴋᴀʀᴇɪɴ!
+───────────────────────
 """
     bot.reply_to(message, welcome_text)
 
@@ -224,17 +242,17 @@ Use /name yourname
 def start_name(message):
     args = message.text.split(maxsplit=1)
     if len(args) < 2: 
-        return bot.reply_to(message, "⚠️ Usage: /name hello")
+        return bot.reply_to(message, "⚠️ Usage: /name Your Name")
     
     u_id = message.from_user.id
     user_sessions[u_id] = {"text": args[1], "font": "small", "mode": "1"}
     
     markup = types.InlineKeyboardMarkup()
     if len(args[1].split()) >= 2:
-        markup.add(types.InlineKeyboardButton("1️⃣ Single", callback_data="sel_1"),
-                   types.InlineKeyboardButton("2️⃣ Double", callback_data="sel_2"))
+        markup.add(types.InlineKeyboardButton("1️⃣ Single(One Word)", callback_data="sel_1"))
+        markup.add(types.InlineKeyboardButton("2️⃣ Double (Two Word)", callback_data="sel_2"))
     else:
-        markup.add(types.InlineKeyboardButton("✨ Apply", callback_data="sel_1"))
+        markup.add(types.InlineKeyboardButton("✨ Choose Font's", callback_data="sel_1"))
     
     bot.reply_to(message, f"Name: `{args[1]}`", reply_markup=markup, parse_mode="Markdown")
 
@@ -258,23 +276,22 @@ def select_filter(call):
                types.InlineKeyboardButton("𝘚𝘭𝘢𝘯𝘵", callback_data="f_slant"),
                types.InlineKeyboardButton("𝕭𝖔𝖑𝖉_𝖌", callback_data="f_gothic"),
                types.InlineKeyboardButton("🅂🅀🅄🄰🅁🄴", callback_data="f_square"),
-               types.InlineKeyboardButton("🅰️ Block", callback_data="f_block"),
-               types.InlineKeyboardButton("🟢 Circle", callback_data="f_circle"),
-               types.InlineKeyboardButton("🫧 Bubble", callback_data="f_bubble"),
+               types.InlineKeyboardButton("🅱🅻🅾🅲🅺", callback_data="f_block"),
+               types.InlineKeyboardButton("🅒🅘🅡🅒🅛🅔", callback_data="f_circle"),
+               types.InlineKeyboardButton("ⓑⓤⓑⓑⓛⓔ", callback_data="f_bubble"),
                types.InlineKeyboardButton("🇬🇷 Greek", callback_data="f_greek"),
                types.InlineKeyboardButton("💲 Money", callback_data="f_currency"),
-               types.InlineKeyboardButton("⒜ Paren", callback_data="f_paren"),
                types.InlineKeyboardButton("𝕋𝕙𝕚𝕟", callback_data="f_thin"),
-               types.InlineKeyboardButton("λ ß ç (FLASH)", callback_data="f_flash"),
-               types.InlineKeyboardButton("ɐ q ɔ (MIRROR)", callback_data="f_mirror"),
-               types.InlineKeyboardButton("ą ҍ ç (WEB)", callback_data="f_web"),
-               types.InlineKeyboardButton("ǟ ɮ ƈ (ANCIENT)", callback_data="f_ancient"),
-               types.InlineKeyboardButton("Δ β Ć (KNIGHT)", callback_data="f_knight"),
-               types.InlineKeyboardButton("ᗩ ᗷ ᑕ (STORM)", callback_data="f_storm"),
-               types.InlineKeyboardButton("α в ¢ (DRAMA)", callback_data="f_drama"),
-               types.InlineKeyboardButton("乃 匚 刀 (DIAMOND)", callback_data="f_diamond"),
-               types.InlineKeyboardButton("Ъ с ď (CLOUD)", callback_data="f_cloud"),
-               types.InlineKeyboardButton("🇧 🇴 🇹 (FLAG)", callback_data="f_flag_font"))
+               types.InlineKeyboardButton("ƒℓαѕн", callback_data="f_flash"),
+               types.InlineKeyboardButton("ɯıɹɹoɹ", callback_data="f_mirror"),
+               types.InlineKeyboardButton("աɛɮ", callback_data="f_web"),
+               types.InlineKeyboardButton("ǟռƈɨɛռȶ", callback_data="f_ancient"),
+               types.InlineKeyboardButton("ƙռɨɢɦȶ", callback_data="f_knight"),
+               types.InlineKeyboardButton("ѕтσям", callback_data="f_storm"),
+               types.InlineKeyboardButton("∂яαмα", callback_data="f_drama"),
+               types.InlineKeyboardButton("ᗪᎥᗩᗰᝪᑎᗪ", callback_data="f_diamond"),
+               types.InlineKeyboardButton("ƈℓσυ∂", callback_data="f_cloud"),
+               types.InlineKeyboardButton("🇫 🇱 🇦 🇬", callback_data="f_flag_font"))
 
     bot.edit_message_text("Select Font", call.message.chat.id, call.message.message_id, reply_markup=markup)
 
