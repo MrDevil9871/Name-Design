@@ -293,6 +293,9 @@ def handle_font(call):
 # ===============================
 def start_bot():
     print("Bot is polling...")
+    
+    bot.delete_webhook() 
+    
     while True:
         try:
             bot.infinity_polling(skip_pending=True)
