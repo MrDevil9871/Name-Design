@@ -151,7 +151,7 @@ def apply_font(text, font_type):
         }
     }
     target = m.get(font_type, {})
-    return "".join(target.get(c, c) for c in text)
+    return " ".join(target.get(ch, ch) for ch in text)
 
 # ===============================
 # SHOW DESIGNS (Pagination Logic)
@@ -279,8 +279,8 @@ def select_filter(call):
                types.InlineKeyboardButton("🅱🅻🅾🅲🅺", callback_data="f_block"),
                types.InlineKeyboardButton("🅒🅘🅡🅒🅛🅔", callback_data="f_circle"),
                types.InlineKeyboardButton("ⓑⓤⓑⓑⓛⓔ", callback_data="f_bubble"),
-               types.InlineKeyboardButton("🇬🇷 Greek", callback_data="f_greek"),
-               types.InlineKeyboardButton("💲 Money", callback_data="f_currency"),
+               types.InlineKeyboardButton("Γρεεκ", callback_data="f_greek"),
+               types.InlineKeyboardButton("₥Ø₦ɆɎ", callback_data="f_currency"),
                types.InlineKeyboardButton("𝕋𝕙𝕚𝕟", callback_data="f_thin"),
                types.InlineKeyboardButton("ƒℓαѕн", callback_data="f_flash"),
                types.InlineKeyboardButton("ɯıɹɹoɹ", callback_data="f_mirror"),
