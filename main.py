@@ -147,12 +147,7 @@ def apply_font(text, font_type):
         }
     }
     target = m.get(font_type, {})
-    
-    if font_type == "flag_font":
-        return "".join(target.get(ch, ch) for ch in text)
-    else:
-        return "".join(target.get(ch, ch) for ch in text)
-
+    return "".join(target.get(c, c) for c in text)
 
 # ===============================
 # SHOW DESIGNS (Pagination Logic)
@@ -253,7 +248,7 @@ def start_name(message):
         markup.add(types.InlineKeyboardButton("1️⃣ Single(One Word)", callback_data="sel_1"))
         markup.add(types.InlineKeyboardButton("2️⃣ Double (Two Word)", callback_data="sel_2"))
     else:
-        markup.add(types.InlineKeyboardButton("✨ Choose Font's", callback_data="sel_1"))
+        markup.add(types.InlineKeyboardButton("✨ Choose Font's ✨", callback_data="sel_1"))
     
     bot.reply_to(message, f"Name: `{args[1]}`", reply_markup=markup, parse_mode="Markdown")
 
